@@ -22,8 +22,13 @@ public class Red : Platform
         _red = Color.red;        
     }    
 
-    private void OnColorChange()
+    private void OnColorChange(bool isApproached)
     {
-        StartCoroutine(ColorChange(_red));
+        if (isApproached)
+        {
+            StartCoroutine(ColorChange(_red));
+        }
+        else
+            StopCoroutine(ColorChange(_red));
     }
 }

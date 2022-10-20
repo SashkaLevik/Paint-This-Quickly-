@@ -20,10 +20,15 @@ public class Blue : Platform
     private void Start()
     {
         _blue = Color.blue;
-    }    
+    }
 
-    private void OncolorChange()
+    private void OncolorChange(bool isApproached)
     {
-        StartCoroutine(ColorChange(_blue));
+        if (isApproached)
+        {
+            StartCoroutine(ColorChange(_blue));
+        }
+        else
+            StopCoroutine(ColorChange(_blue));
     }
 }

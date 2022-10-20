@@ -7,19 +7,28 @@ using DG.Tweening;
 public class Platform : MonoBehaviour
 {
     [SerializeField] protected Player _player;
-    [SerializeField] private float _changingSpeed;
+    [SerializeField] protected float _changingSpeed;
 
-    public event UnityAction Approached;
+    public event UnityAction<bool> Approached;
+
+    public bool IsApproached { get; private set; }
 
     public void OnTriggerEnter(Collider collider)
     {
         if (collider.TryGetComponent<Player>(out _player))
         {
-            Approached?.Invoke();
+            IsApproached = true;
+            Approached?.Invoke(IsApproached);
         }
     }
 
-    public IEnumerator ColorChange(Color color)
+    private void OnTriggerExit(Collider other)
+    {
+        IsApproached = false;
+        Approached?.Invoke(IsApproached);
+    }
+
+    public virtual IEnumerator ColorChange(Color color)
     {
         if (_player.IsFilled == false)
         {

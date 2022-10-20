@@ -17,6 +17,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _renderer = GetComponent<Renderer>();
-        DefaultColor = _renderer.material.color;
+        DefaultColor = new Color(255,222,173);
     }
 }
