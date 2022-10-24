@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    [HideInInspector] public Color DefaultColor;    
+    public Color DefaultColor;
 
     private Renderer _renderer;
 
@@ -17,6 +17,5 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _renderer = GetComponent<Renderer>();
-        DefaultColor = new Color(255,222,173);
     }
 }

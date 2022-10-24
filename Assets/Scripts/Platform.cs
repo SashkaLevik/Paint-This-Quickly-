@@ -7,7 +7,7 @@ using DG.Tweening;
 public class Platform : MonoBehaviour
 {
     [SerializeField] protected Player _player;
-    [SerializeField] protected float _changingSpeed;
+    [SerializeField] protected float _colorChangingSpeed_;
 
     public event UnityAction<bool> Approached;
 
@@ -32,7 +32,7 @@ public class Platform : MonoBehaviour
     {
         if (_player.IsFilled == false)
         {
-            _player.Renderer.material.DOColor(color, _changingSpeed);
+            _player.Renderer.material.DOColor(color, _colorChangingSpeed_);
             yield return null;
         }
         _player.IsFilled = true;
