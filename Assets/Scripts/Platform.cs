@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] protected Player _player;
+    [SerializeField] protected Tank _tank;
     [SerializeField] protected float _colorChangingSpeed_;
 
     public event UnityAction<bool> Approached;
@@ -15,7 +15,7 @@ public class Platform : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        if (collider.TryGetComponent<Player>(out _player))
+        if (collider.TryGetComponent<Tank>(out _tank))
         {
             IsApproached = true;
             Approached?.Invoke(IsApproached);
@@ -30,11 +30,11 @@ public class Platform : MonoBehaviour
 
     public virtual IEnumerator ColorChange(Color color)
     {
-        if (_player.IsFilled == false)
+        if (_tank.IsFilled == false)
         {
-            _player.Renderer.material.DOColor(color, _colorChangingSpeed_);
+            _tank.Renderer.material.DOColor(color, _colorChangingSpeed_);
             yield return null;
         }
-        _player.IsFilled = true;
+        _tank.IsFilled = true;
     }
 }

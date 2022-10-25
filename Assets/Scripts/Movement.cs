@@ -32,7 +32,7 @@ public class Movement : MonoBehaviour
         Vector3 moveDirection = new Vector3(0.0f, 0.0f, moveVertical);
         Vector3 rotate = new Vector3(0.0f, moveHorizontal, 0.0f);
 
-        if (moveHorizontal != 0 || moveVertical != 0)
+        if (moveVertical != 0 || moveHorizontal != 0)
         {
             _animator.SetBool("IsRun", true);
             transform.Translate(moveDirection * _moveSpeed * Time.fixedDeltaTime);
@@ -40,5 +40,6 @@ public class Movement : MonoBehaviour
         }
         else
             _animator.SetBool("IsRun", false);
+
     }
 }
