@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6219766860cb841ba1c6fe493cf52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _food: {fileID: 0}
+  _colorChangingSpeed: 2
   DefaultColor: {r: 1, g: 1, b: 1, a: 1}
   IsFilled: 0
 --- !u!1 &4740773961614098682
@@ -139,7 +141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4740773961614098682}
   m_LocalRotation: {x: 0.16127539, y: -0, z: -0, w: 0.98690945}
-  m_LocalPosition: {x: 0, y: 6.08, z: -9.261996}
+  m_LocalPosition: {x: 0, y: 5.17, z: -6.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -465,8 +467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d16f91180ac9bc34bbcce648bd504c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
-  IsFilled: 0
 --- !u!65 &68321695793438045
 BoxCollider:
   m_ObjectHideFlags: 0
