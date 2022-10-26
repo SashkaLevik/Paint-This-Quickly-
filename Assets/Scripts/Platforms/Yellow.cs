@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Yellow : MonoBehaviour
+public class Yellow : Platform
 {
-    [SerializeField] private Player _player;
+    private Color _yellow;
 
-    private Renderer _playerRenderer;
+    private void OnEnable()
+    {
+        Approached += OnColorChange;
+    }
+
+    private void OnDisable()
+    {
+        Approached -= OnColorChange;
+    }
 
     private void Start()
     {
-        _playerRenderer = _player.GetComponent<Renderer>();
+        _yellow = Color.yellow;
     }
 
-    public void OnTriggerEnter(Collider collider)
+    private void OnColorChange(bool isApproached)
     {
-        if (collider.TryGetComponent<Player>(out _player))
+        if (isApproached)
         {
-            _playerRenderer.material.color = Color.yellow;
+            ChangeColor(_yellow);
         }
     }
 }

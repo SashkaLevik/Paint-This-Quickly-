@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pink : MonoBehaviour
+public class Pink : Platform
 {
-    // Start is called before the first frame update
-    void Start()
+    private Color _pink;
+
+    private void OnEnable()
     {
-        
+        Approached += OnColorChange;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        Approached -= OnColorChange;
+    }
+
+    private void Start()
+    {
+        _pink = new Color32(255, 192, 203, 255);
+    }
+
+    private void OnColorChange(bool isApproached)
+    {
+        if (isApproached)
+        {
+            ChangeColor(_pink);
+        }
     }
 }

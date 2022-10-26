@@ -26,9 +26,7 @@ public class Blue : Platform
     {
         if (isApproached)
         {
-            StartCoroutine(ColorChange(_blue));
+            ChangeColor(_blue);
         }
-        else
-            StopCoroutine(ColorChange(_blue));
     }
 }

@@ -26,9 +26,11 @@ public class Red : Platform
     {
         if (isApproached)
         {
-            StartCoroutine(ColorChange(_red));
+            ChangeColor(_red);
+            //StartCoroutine(ChangeColor(_red));
+            //StartCoroutine(ColorChange(_red));
         }
-        else
-            StopCoroutine(ColorChange(_red));
+        //else
+        //    StopCoroutine(ColorChange(_red));
     }
 }

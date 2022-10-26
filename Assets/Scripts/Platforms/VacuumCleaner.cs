@@ -22,23 +22,21 @@ public class VacuumCleaner : Platform
         _defaultColor = _tank.DefaultColor;
     }
 
-    public override IEnumerator ColorChange(Color color)
+    public override void ChangeColor(Color color)
     {
         if (_tank.IsFilled == true)
         {
-            _tank.Renderer.material.DOColor(color, _colorChangingSpeed_);
-            yield return null;
+            _tank.Renderer.material.DOColor(color, _colorChangingSpeed);
         }
         _tank.IsFilled = false;
     }
+
 
     private void OnColorChange(bool isApproached)
     {
         if (isApproached)
         {
-            StartCoroutine(ColorChange(_defaultColor));
-        }
-        else
-            StopCoroutine(ColorChange(_defaultColor));
+            ChangeColor(_defaultColor);
+        }        
     }
 }

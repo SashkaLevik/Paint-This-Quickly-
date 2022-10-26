@@ -18,16 +18,14 @@ public class Purple : Platform
 
     private void Start()
     {
-        _purple = new Color(128, 0, 128, 255);
+        _purple = new Color32(128, 0, 128, 255);
     }
 
     private void OnColorChange(bool isApproached)
     {
         if (isApproached)
         {
-            StartCoroutine(ColorChange(_purple));
+            ChangeColor(_purple);
         }
-        else
-            StopCoroutine(ColorChange(_purple));
     }
 }

@@ -5,17 +5,17 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    public Color DefaultColor;
+    //public Color DefaultColor;
 
-    private Renderer _renderer;
+    //private Renderer _renderer;
 
-    public bool IsFilled;
+    //public bool IsFilled;
 
-    public Renderer Renderer => _renderer;
+    //public Renderer Renderer => _renderer;
     
 
-    private void Start()
-    {
-        _renderer = GetComponent<Renderer>();
-    }
+    //private void Start()
+    //{
+    //    _renderer = GetComponent<Renderer>();
+    //}
 }

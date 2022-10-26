@@ -25,9 +25,7 @@ public class Cyan : Platform
     {
         if (isApproached)
         {
-            StartCoroutine(ColorChange(_cyan));
+            ChangeColor(_cyan);
         }
-        else
-            StopCoroutine(ColorChange(_cyan));
     }
 }

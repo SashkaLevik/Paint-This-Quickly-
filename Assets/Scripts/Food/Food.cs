@@ -4,14 +4,27 @@ using UnityEngine;
 using UnityEngine.Events;
 using DG.Tweening;
 
-public class Platform : MonoBehaviour
+public class Food : MonoBehaviour
 {
     [SerializeField] protected Tank _tank;
     [SerializeField] protected float _colorChangingSpeed;
 
+    public bool IsFilled;
+
+    public Color DefaultColor;
+
+    private Renderer _renderer;
+
     public event UnityAction<bool> Approached;
 
+    public Renderer Renderer => _renderer;
+
     public bool IsApproached { get; private set; }
+
+    private void Start()
+    {
+        _renderer = GetComponent<Renderer>();
+    }
 
     public void OnTriggerEnter(Collider collider)
     {
@@ -28,12 +41,11 @@ public class Platform : MonoBehaviour
         Approached?.Invoke(IsApproached);
     }
 
-    public virtual void ChangeColor(Color color)
+    public void CookFood(Color color)
     {
-        if (_tank.IsFilled == false)
+        if (_tank.IsFilled == true)
         {
-            _tank.Renderer.material.DOColor(color, _colorChangingSpeed);
+            this._renderer.material.DOColor(_tank.Renderer.material.color, _colorChangingSpeed);
         }
-        _tank.IsFilled = true;
-    }    
+    }
 }

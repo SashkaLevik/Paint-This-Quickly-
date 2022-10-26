@@ -18,16 +18,14 @@ public class Orange : Platform
 
     private void Start()
     {
-        _orange = Color.magenta;
+        _orange = new Color32(255, 165, 0, 255);
     }
 
     private void OnColorChange(bool isApproached)
     {
         if (isApproached)
         {
-            StartCoroutine(ColorChange(_orange));
-        }
-        else
-            StopCoroutine(ColorChange(_orange));
+            ChangeColor(_orange);
+        }        
     }
 }

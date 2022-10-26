@@ -18,16 +18,14 @@ public class Green : Platform
 
     private void Start()
     {
-        _green = Color.green;
+        _green = new Color32(0, 128, 0, 255);
     }
 
     private void OnColorChange(bool isApproached)
     {
         if (isApproached)
         {
-            StartCoroutine(ColorChange(_green));
+            ChangeColor(_green);
         }
-        else
-            StopCoroutine(ColorChange(_green));
     }
 }
