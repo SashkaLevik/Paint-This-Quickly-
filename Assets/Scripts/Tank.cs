@@ -37,7 +37,7 @@ public class Tank : MonoBehaviour
     }
 
     private void OnFoodColorChange(bool isAproached)
-    {
+    {        
         _food.Renderer.material.DOColor(DefaultColor, _colorChangingSpeed);
     }
 }
