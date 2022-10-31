@@ -20,7 +20,7 @@ public class Food : MonoBehaviour
 
     private void Start()
     {
-        _renderer = GetComponent<Renderer>();
+        _renderer = GetComponent<Renderer>();        
     }
 
     public void OnTriggerEnter(Collider collider)
@@ -32,7 +32,7 @@ public class Food : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         IsApproached = false;
         Approached?.Invoke(IsApproached);
