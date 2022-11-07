@@ -4,23 +4,43 @@ using UnityEngine;
 
 public class ColorController : MonoBehaviour
 {
-    [SerializeField] private Tank _tank;
-    //public Color32 _color;
-    public Color32 _purpleColor;
+    [SerializeField] protected Tank _tank;
 
-    //private Renderer _renderer;
+    public List<Color> colors = new List<Color>();
+
+    protected Color _tankColor;
+
+    private Color _redColor = new Color32(255, 0, 0, 255);
+    private Color _orangeColor = new Color32(255, 127, 0, 255);
+    private Color _yellowColor = new Color32(255, 255, 0, 255);
+    private Color _greenColor = new Color32(0, 128, 0, 255);
+    private Color _blueColor = new Color32(0, 0, 255, 255);
+    private Color _lilacColor = new Color32(148, 0, 211, 255);
+    private Color _purpleColor = new Color32(128, 0, 128, 255);
+    private Color _braunColor = new Color32(139, 69, 19, 255);
+
     private void Start()
     {
-        //_renderer = GetComponent<Renderer>();
-        _purpleColor = new Color32(128, 0, 128, 255);
-        //_renderer.material.color = _purpleColor;
+        colors.Add(_redColor);
+        colors.Add(_orangeColor);
+        colors.Add(_yellowColor);
+        colors.Add(_greenColor);
+        colors.Add(_blueColor);
+        colors.Add(_lilacColor);
+        colors.Add(_purpleColor);
+        colors.Add(_braunColor);
     }
 
-    public bool TryGetColor()
+    private void Update()
+    {
+        _tankColor = _tank.CurrentColor;
+    }   
+
+    public bool TryGetColor(Color color)
     {
         bool result = false;
-        if (_tank.Renderer.material.color == _purpleColor)
+        if (_tankColor == color)
             result = true;
         return result;
-    }    
+    }
 }

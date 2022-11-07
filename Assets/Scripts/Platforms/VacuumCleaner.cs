@@ -22,11 +22,12 @@ public class VacuumCleaner : Platform
         _defaultColor = _tank.DefaultColor;
     }
 
-    public override void ChangeColor(Color color)
+    public override void ChangeTankColor(Color color)
     {
         if (_tank.IsFilled == true)
         {
             _tank.Renderer.material.DOColor(color, _colorChangingSpeed);
+            _tank.DrainTank();
         }
         _tank.IsFilled = false;
     }
@@ -36,7 +37,7 @@ public class VacuumCleaner : Platform
     {
         if (isApproached)
         {
-            ChangeColor(_defaultColor);
+            ChangeTankColor(_defaultColor);
         }        
     }
 }

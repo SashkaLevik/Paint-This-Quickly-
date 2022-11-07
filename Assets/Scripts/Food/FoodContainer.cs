@@ -8,7 +8,7 @@ public class FoodContainer : MonoBehaviour
 
     public Food food => _food;
 
-    public List<Component> foodContainer = new List<Component>();
+    public List<Component> Container = new List<Component>();
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class FoodContainer : MonoBehaviour
 
         foreach (var piece in foodPieces)
         {
-            foodContainer.Add(piece);
+            Container.Add(piece);
             print(piece.name);
         }
     }

@@ -40,6 +40,5 @@ public class Movement : MonoBehaviour
         }
         else
             _animator.SetBool("IsRun", false);
-
     }
 }

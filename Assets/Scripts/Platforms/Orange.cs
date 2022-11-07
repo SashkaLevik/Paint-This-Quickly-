@@ -16,16 +16,15 @@ public class Orange : Platform
         Approached -= OnColorChange;
     }
 
-    private void Start()
+    private void Update()
     {
-        _orange = new Color32(255, 165, 0, 255);
+        _orange = _colorController.colors[1];
     }
-
     private void OnColorChange(bool isApproached)
     {
         if (isApproached)
         {
-            ChangeColor(_orange);
+            ChangeTankColor(_orange);
         }        
     }
 }

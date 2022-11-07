@@ -25,7 +25,7 @@ public class Pink : Platform
     {
         if (isApproached)
         {
-            ChangeColor(_pink);
+            ChangeTankColor(_pink);
         }
     }
 }

@@ -6,49 +6,38 @@ using DG.Tweening;
 public class Tank : MonoBehaviour
 {
     [SerializeField] protected float _colorChangingSpeed;
-    [SerializeField] private FoodContainer _foodContainer;
     [SerializeField] private ColorController _colorController;
 
     public Color DefaultColor;
+    public Color CurrentColor;
     private Renderer _renderer;
-    private Renderer _foodRenderer;
+    private Vector3 _filledTank;
+    private Vector3 _emptyTank;
 
     public bool IsFilled;
 
-    public Renderer Renderer => _renderer;
-
-    private void OnEnable()
-    {
-        _foodContainer.food.Approached += OnFoodColorChange;
-    }
-
-    private void OnDisable()
-    {
-        _foodContainer.food.Approached += OnFoodColorChange;
-    }
+    public Renderer Renderer => _renderer;    
 
     private void Start()
     {
         _renderer = GetComponent<Renderer>();
+        DefaultColor = new Color32(255, 222, 173, 255);
+        _filledTank = new Vector3(0.4f, 0.4f, 0.4f);
+        _emptyTank = new Vector3(0.4f, 0.02f, 0.4f);
     }
 
     private void Update()
     {
-        DefaultColor = _renderer.material.color;
+        CurrentColor = _renderer.material.color;
     }
 
-    private void OnFoodColorChange(bool isAproached)
+    public void FillTank()
     {
-        foreach (var food in _foodContainer.foodContainer)
-        {
-            _foodRenderer = food.GetComponent<Renderer>();
-            if (_colorController.TryGetColor())
-            {
-                _foodRenderer.material.DOColor(DefaultColor, _colorChangingSpeed);
-            }
+        transform.DOScale(_filledTank, _colorChangingSpeed);
+    }
 
-
-            //food.GetComponent<Renderer>().material.DOColor(DefaultColor, _colorChangingSpeed);
-        }
+    public void DrainTank()
+    {
+        transform.DOScale(_emptyTank, _colorChangingSpeed);
     }
 }

@@ -16,16 +16,16 @@ public class Green : Platform
         Approached -= OnColorChange;
     }
 
-    private void Start()
+    private void Update()
     {
-        _green = new Color32(0, 128, 0, 255);
+        _green = _colorController.colors[3];
     }
 
     private void OnColorChange(bool isApproached)
     {
         if (isApproached)
         {
-            ChangeColor(_green);
+            ChangeTankColor(_green);
         }
     }
 }

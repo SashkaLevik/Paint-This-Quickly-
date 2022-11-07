@@ -7,6 +7,7 @@ using DG.Tweening;
 public class Platform : MonoBehaviour
 {
     [SerializeField] protected Tank _tank;
+    [SerializeField] protected ColorController _colorController;
     [SerializeField] protected float _colorChangingSpeed;
 
     public event UnityAction<bool> Approached;
@@ -28,12 +29,13 @@ public class Platform : MonoBehaviour
         Approached?.Invoke(IsApproached);
     }
 
-    public virtual void ChangeColor(Color color)
+    public virtual void ChangeTankColor(Color color)
     {
         if (_tank.IsFilled == false)
         {
             _tank.Renderer.material.DOColor(color, _colorChangingSpeed);
+            _tank.FillTank();
         }
         _tank.IsFilled = true;
-    }    
+    }   
 }

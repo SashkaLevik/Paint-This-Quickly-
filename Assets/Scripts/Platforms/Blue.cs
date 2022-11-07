@@ -17,16 +17,16 @@ public class Blue : Platform
         Approached -= OncolorChange;
     }
 
-    private void Start()
+    private void Update()
     {
-        _blue = Color.blue;
+        _blue = _colorController.colors[4];
     }
 
     private void OncolorChange(bool isApproached)
     {
         if (isApproached)
         {
-            ChangeColor(_blue);
+            ChangeTankColor(_blue);
         }
     }
 }

@@ -17,20 +17,17 @@ public class Red : Platform
         Approached -= OnColorChange;
     }
 
-    private void Start()
+    private void Update()
     {
-        _red = Color.red;        
-    }    
+        _red = _colorController.colors[0];
+    }
 
     private void OnColorChange(bool isApproached)
     {
         if (isApproached)
         {
-            ChangeColor(_red);
-            //StartCoroutine(ChangeColor(_red));
-            //StartCoroutine(ColorChange(_red));
-        }
-        //else
-        //    StopCoroutine(ColorChange(_red));
+            ChangeTankColor(_red);
+            
+        }        
     }
 }

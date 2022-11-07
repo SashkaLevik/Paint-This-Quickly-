@@ -25,7 +25,7 @@ public class Cyan : Platform
     {
         if (isApproached)
         {
-            ChangeColor(_cyan);
+            ChangeTankColor(_cyan);
         }
     }
 }

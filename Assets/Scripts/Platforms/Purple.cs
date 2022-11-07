@@ -16,16 +16,16 @@ public class Purple : Platform
         Approached -= OnColorChange;
     }
 
-    private void Start()
+    private void Update()
     {
-        _purple = new Color32(128, 0, 128, 255);
-    }
+        _purple = _colorController.colors[6];
+    }    
 
     private void OnColorChange(bool isApproached)
     {
         if (isApproached)
         {
-            ChangeColor(_purple);
+            ChangeTankColor(_purple);
         }
     }
 }

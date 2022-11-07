@@ -16,16 +16,16 @@ public class Yellow : Platform
         Approached -= OnColorChange;
     }
 
-    private void Start()
+    private void Update()
     {
-        _yellow = Color.yellow;
+        _yellow = _colorController.colors[2];
     }
 
     private void OnColorChange(bool isApproached)
     {
         if (isApproached)
         {
-            ChangeColor(_yellow);
+            ChangeTankColor(_yellow);
         }
     }
 }

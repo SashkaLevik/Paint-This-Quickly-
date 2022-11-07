@@ -7,6 +7,8 @@ using DG.Tweening;
 public class Food : MonoBehaviour
 {
     [SerializeField] protected Tank _tank;
+    [SerializeField] protected ColorController _colorController;
+    [SerializeField] protected float _colorChangingSpeed;
 
     public bool IsFilled;
 
@@ -36,5 +38,19 @@ public class Food : MonoBehaviour
     {
         IsApproached = false;
         Approached?.Invoke(IsApproached);
-    }    
+    }
+
+    public void ChangeFoodColor(Color color)
+    {
+        if (_colorController.TryGetColor(color))
+        {
+            this._renderer.material.DOColor(color, _colorChangingSpeed);
+        }
+    }
+
+    public void Init(Tank tank, ColorController colorController)
+    {
+        _tank = tank;
+        _colorController = colorController;
+    }
 }
