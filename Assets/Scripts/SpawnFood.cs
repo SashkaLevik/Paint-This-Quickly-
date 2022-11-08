@@ -15,15 +15,21 @@ public class SpawnFood : MonoBehaviour
     }
 
     private void Spawn(GameObject[] tamplate)
-    {
+    {        
         for (int i = 0; i < _tamplate.Length; i++)
         {
-            Food[] food = Instantiate(tamplate[i], _table.transform.position, _table.transform.rotation).GetComponentsInChildren<Food>();
-            
+            Vector3 spawnPosition = _table.transform.position + GetRandomPos();
+            Food[] food = Instantiate(tamplate[i], spawnPosition, _table.transform.rotation).GetComponentsInChildren<Food>();
+
             foreach (var foodPieces in food)
             {
                 foodPieces.Init(_tank, _colorController);
             }
         }
     }
+    
+    private Vector3 GetRandomPos()
+    {
+        return new Vector3(Random.Range(-10, 10), 0.2f, Random.Range(-10, 10));
+    }    
 }

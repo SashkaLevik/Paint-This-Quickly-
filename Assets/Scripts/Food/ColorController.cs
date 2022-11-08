@@ -15,7 +15,7 @@ public class ColorController : MonoBehaviour
     private Color _yellowColor = new Color32(255, 255, 0, 255);
     private Color _greenColor = new Color32(0, 128, 0, 255);
     private Color _blueColor = new Color32(0, 0, 255, 255);
-    private Color _lilacColor = new Color32(148, 0, 211, 255);
+    private Color _skyColor = new Color32(0, 255, 255, 255);
     private Color _purpleColor = new Color32(128, 0, 128, 255);
     private Color _braunColor = new Color32(139, 69, 19, 255);
 
@@ -26,7 +26,7 @@ public class ColorController : MonoBehaviour
         colors.Add(_yellowColor);
         colors.Add(_greenColor);
         colors.Add(_blueColor);
-        colors.Add(_lilacColor);
+        colors.Add(_skyColor);
         colors.Add(_purpleColor);
         colors.Add(_braunColor);
     }
