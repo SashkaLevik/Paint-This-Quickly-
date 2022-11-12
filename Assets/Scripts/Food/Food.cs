@@ -8,7 +8,9 @@ public class Food : MonoBehaviour
 {
     [SerializeField] protected Tank _tank;
     [SerializeField] protected ColorController _colorController;
-    [SerializeField] protected float _colorChangingSpeed;
+    [SerializeField] protected float _changingSpeed;
+
+    public Color DefaultColor;
 
     public bool IsFilled;
 
@@ -22,7 +24,8 @@ public class Food : MonoBehaviour
 
     private void Start()
     {
-        _renderer = GetComponent<Renderer>();        
+        _renderer = GetComponent<Renderer>();
+        DefaultColor = new Color32(217, 203, 203, 255);
     }
 
     public void OnTriggerEnter(Collider collider)
@@ -42,10 +45,10 @@ public class Food : MonoBehaviour
 
     public void ChangeFoodColor(Color color)
     {
-        if (_colorController.TryGetColor(color))
+        if (_colorController.TryGetColor(color) && CompareColor(color) && _tank.IsFilled )
         {
-            this._renderer.material.DOColor(color, _colorChangingSpeed);
-            _tank.ChangeScale(_tank._capacity);
+            this._renderer.material.DOColor(color, _changingSpeed);
+            _tank.ChangeScale();
         }
     }
 
@@ -53,5 +56,13 @@ public class Food : MonoBehaviour
     {
         _tank = tank;
         _colorController = colorController;
+    }
+
+    private bool CompareColor(Color color)
+    {
+        bool isPaited = false;
+        if (this._renderer.material.color != color)
+            isPaited = true;
+        return isPaited;
     }
 }

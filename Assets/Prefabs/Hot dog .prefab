@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 239880999129505190}
   - component: {fileID: 796116542921102148}
   - component: {fileID: 2517789433592401971}
-  - component: {fileID: 5707396672856528263}
   - component: {fileID: 1204601367076217431}
   - component: {fileID: 2829824824168362474}
   m_Layer: 0
@@ -86,22 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5707396672856528263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3411014273028256487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bfc19f35fdd8d0448c22e3ef54559a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tank: {fileID: 0}
-  _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
-  IsFilled: 0
 --- !u!65 &1204601367076217431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tank: {fileID: 0}
   _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
+  _changingSpeed: 2
   IsFilled: 0
 --- !u!1 &4566405837829803358
 GameObject:
@@ -314,7 +297,6 @@ GameObject:
   - component: {fileID: 4256448798371398406}
   - component: {fileID: 4306190596321694757}
   - component: {fileID: 890666777046558444}
-  - component: {fileID: 5211788851713274302}
   - component: {fileID: 7281846498841365378}
   - component: {fileID: 7570750003835201806}
   m_Layer: 0
@@ -389,22 +371,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5211788851713274302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4706484935482105523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f03cc7ddc3abff45908e2bbf6379756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tank: {fileID: 0}
-  _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
-  IsFilled: 0
 --- !u!65 &7281846498841365378
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -432,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tank: {fileID: 0}
   _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
+  _changingSpeed: 2
   IsFilled: 0
 --- !u!1 &8140044895524563904
 GameObject:
