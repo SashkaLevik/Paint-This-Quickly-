@@ -45,6 +45,7 @@ public class Food : MonoBehaviour
         if (_colorController.TryGetColor(color))
         {
             this._renderer.material.DOColor(color, _colorChangingSpeed);
+            _tank.ChangeScale(_tank._capacity);
         }
     }
 

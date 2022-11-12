@@ -19,7 +19,7 @@ public class SpawnFood : MonoBehaviour
         for (int i = 0; i < _tamplate.Length; i++)
         {
             Vector3 spawnPosition = _table.transform.position + GetRandomPos();
-            Food[] food = Instantiate(tamplate[i], spawnPosition, _table.transform.rotation).GetComponentsInChildren<Food>();
+            Food[] food = Instantiate(tamplate[i], spawnPosition, tamplate[i].transform.rotation).GetComponentsInChildren<Food>();
 
             foreach (var foodPieces in food)
             {
@@ -30,6 +30,6 @@ public class SpawnFood : MonoBehaviour
     
     private Vector3 GetRandomPos()
     {
-        return new Vector3(Random.Range(-10, 10), 0.2f, Random.Range(-10, 10));
+        return new Vector3(Random.Range(-10, 10), 0.1f, Random.Range(-10, 10));
     }    
 }

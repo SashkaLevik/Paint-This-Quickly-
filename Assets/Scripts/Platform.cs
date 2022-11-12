@@ -9,6 +9,7 @@ public class Platform : MonoBehaviour
     [SerializeField] protected Tank _tank;
     [SerializeField] protected ColorController _colorController;
     [SerializeField] protected float _colorChangingSpeed;
+    [SerializeField] private UpgradeScreen _upgradeScreen;
 
     public event UnityAction<bool> Approached;
 
@@ -34,7 +35,7 @@ public class Platform : MonoBehaviour
         if (_tank.IsFilled == false)
         {
             _tank.Renderer.material.DOColor(color, _colorChangingSpeed);
-            _tank.FillTank();
+            _tank.FillTank(_tank._capacity);
         }
         _tank.IsFilled = true;
     }   

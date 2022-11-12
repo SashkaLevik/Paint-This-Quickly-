@@ -8,8 +8,15 @@ public class UpgradeScreen : MonoBehaviour
 {
     [SerializeField] private Button _levelUpButton;
     [SerializeField] private Tank _tank;
+    
+    private Vector3 _levelUpValue;
 
     public event UnityAction LevelUp;
+
+    private void Start()
+    {
+        _levelUpValue = new Vector3(0.0f, 0.1f, 0.0f);
+    }
 
     private void OnEnable()
     {
@@ -23,6 +30,7 @@ public class UpgradeScreen : MonoBehaviour
 
     private void OnLevelUpButton()
     {
-        _tank._tankCapacity++;
-    }
+        _tank._capacity += _levelUpValue;
+        LevelUp?.Invoke();
+    }    
 }
