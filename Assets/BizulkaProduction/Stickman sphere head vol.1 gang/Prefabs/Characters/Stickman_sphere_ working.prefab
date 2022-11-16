@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6840904511583639051}
   - component: {fileID: 5018725041746141903}
   - component: {fileID: 7664741139903171899}
+  - component: {fileID: 1769072916}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2893678902484594351}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0516, y: 1.1259998, z: -0.431}
-  m_LocalScale: {x: 0.4, y: 0, z: 0.4}
+  m_LocalPosition: {x: -0.0516, y: 0.6775, z: -0.431}
+  m_LocalScale: {x: 0.4, y: 0.07, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5560732405537916267}
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b2d6ac651b6986f448a2f5d1b7665e9f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,11 +112,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6219766860cb841ba1c6fe493cf52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colorChangingSpeed: 2
+  _changingSpeed: 0
   _colorController: {fileID: 0}
+  _upgradeScreen: {fileID: 0}
   DefaultColor: {r: 1, g: 1, b: 1, a: 1}
   CurrentColor: {r: 0, g: 0, b: 0, a: 0}
+  _capacity: {x: 0, y: 0, z: 0}
   IsFilled: 0
+--- !u!114 &1769072916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2893678902484594351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8c7bf3e4b250e42a1a888a0e4f0fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5560732405537495297
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +313,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5560732405537916267
 Transform:
   m_ObjectHideFlags: 0
@@ -370,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e15cb3cf10cce14686d6aa60927c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateSpeed: 80
+  _rotateSpeed: 120
 --- !u!114 &1188781277911397340
 MonoBehaviour:
   m_ObjectHideFlags: 0

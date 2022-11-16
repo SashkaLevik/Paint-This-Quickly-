@@ -6,7 +6,8 @@ using DG.Tweening;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] protected Tank _tank;
+    [SerializeField] protected TankView _tank;
+    [SerializeField] protected View _tankView;
     [SerializeField] protected ColorController _colorController;
     [SerializeField] protected float _colorChangingSpeed;
     [SerializeField] private UpgradeScreen _upgradeScreen;
@@ -17,7 +18,7 @@ public class Platform : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        if (collider.TryGetComponent<Tank>(out _tank))
+        if (collider.TryGetComponent<TankView>(out _tank))
         {
             IsApproached = true;
             Approached?.Invoke(IsApproached);
@@ -30,13 +31,13 @@ public class Platform : MonoBehaviour
         Approached?.Invoke(IsApproached);
     }
 
-    public virtual void ChangeTankColor(Color color)
-    {
-        if (_tank.IsFilled == false)
-        {
-            _tank.Renderer.material.DOColor(color, _colorChangingSpeed);
-            _tank.FillTank(_tank._capacity);
-        }
-        _tank.IsFilled = true;
-    }   
+    //public virtual void ChangeTankColor(Color color)
+    //{
+    //    if (_tank.IsFilled == false)
+    //    {
+    //        _tank.Renderer.material.DOColor(color, _colorChangingSpeed);
+    //        _tank.FillTank(_tank._capacity);
+    //    }
+    //    _tank.IsFilled = true;
+    //}
 }

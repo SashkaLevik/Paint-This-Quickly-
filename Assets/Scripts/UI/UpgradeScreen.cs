@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class UpgradeScreen : MonoBehaviour
 {
     [SerializeField] private Button _levelUpButton;
-    [SerializeField] private Tank _tank;
+    [SerializeField] private TankView _tank;
     
     private Vector3 _levelUpValue;
 

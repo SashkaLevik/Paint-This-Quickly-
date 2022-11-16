@@ -1003,10 +1003,11 @@ MonoBehaviour:
   _table: {fileID: 826568071}
   _tamplate:
   - {fileID: 5818660664259531804, guid: 3a92267bd1c8cfa4893a608d5b6fe035, type: 3}
-  - {fileID: 1379179533402897011, guid: 707ba1fb08ca4ab4fbb6d3df72b22714, type: 3}
-  - {fileID: 5172592528225893510, guid: ea38d86456d71204bbee3a9f4694ee4b, type: 3}
+  - {fileID: 5818660664259531804, guid: 3a92267bd1c8cfa4893a608d5b6fe035, type: 3}
+  - {fileID: 5818660664259531804, guid: 3a92267bd1c8cfa4893a608d5b6fe035, type: 3}
   - {fileID: 8140044895524563904, guid: 71c3e311b7d0f534db644c722bd869af, type: 3}
   - {fileID: 6197068906880627709, guid: 65c2e2b78c2d8fc4fabbfc1f08e6e497, type: 3}
+  - {fileID: 8140044895524563904, guid: 71c3e311b7d0f534db644c722bd869af, type: 3}
   - {fileID: 8140044895524563904, guid: 71c3e311b7d0f534db644c722bd869af, type: 3}
   _tank: {fileID: 527099119}
   _colorController: {fileID: 2117473142}

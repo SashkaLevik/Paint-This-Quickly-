@@ -1,64 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
+using UnityEngine.Events;
 
 public class Tank : MonoBehaviour
 {
-    [SerializeField] protected float _changingSpeed;
-    [SerializeField] private ColorController _colorController;
-    [SerializeField] private UpgradeScreen _upgradeScreen;
+    private float _maxCapacity = 1;
+    private float _minCapacity = 0;
+    private float _currentCapacity;
 
-    public Color DefaultColor;
-    public Color CurrentColor;
-    public Vector3 _capacity;
-    private Renderer _renderer;
-    private Vector3 _emptyTank;    
-    private Vector3 _scaleChangeValue;
-    private Vector3 _currentCapacity;
+    public float MaxCapacity => _maxCapacity;
+    public bool IsApproached { get; private set; }
 
-    public bool IsFilled;
+    public event UnityAction Filled;
 
-    public Renderer Renderer => _renderer;    
+    public bool _isFilled = false;
 
     private void Start()
     {
-        _renderer = GetComponent<Renderer>();
-        DefaultColor = new Color32(255, 222, 173, 255);
-        _emptyTank = new Vector3(0.4f, 0.1f, 0.4f);
-        _capacity = new Vector3(0.4f, 0.2f, 0.4f);
-        _scaleChangeValue = new Vector3(0.0f, 0.1f, 0.0f);
-    }    
-
-    private void Update()
-    {
-        CurrentColor = _renderer.material.color;
-    }    
-
-    public void FillTank(Vector3 tankLevel)
-    {
-        transform.DOScale(tankLevel, _changingSpeed);
-        _currentCapacity = _capacity;
-        IsFilled = true;
+        _currentCapacity = _minCapacity;
     }
 
-    public void DrainTank()
+    private void FillTank()
     {
-        transform.DOScale(_emptyTank, _changingSpeed);
-    }
-
-    public void ChangeScale()
-    {
-        if (_currentCapacity.y > _emptyTank.y)
-        {
-            Vector3 changeValue = _currentCapacity - _scaleChangeValue;
-            transform.DOScale(changeValue, _changingSpeed);            
-            _currentCapacity = changeValue;
-        }
-        else
-        {
-            this._renderer.material.color = DefaultColor;
-            IsFilled = false;
-        }
+        
     }
 }

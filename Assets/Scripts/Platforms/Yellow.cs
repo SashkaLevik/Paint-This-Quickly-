@@ -25,7 +25,7 @@ public class Yellow : Platform
     {
         if (isApproached)
         {
-            ChangeTankColor(_yellow);
+            _tankView.ChangeTankColor(_yellow);
         }
     }
 }

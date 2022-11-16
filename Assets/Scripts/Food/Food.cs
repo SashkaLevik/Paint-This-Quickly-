@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class Food : MonoBehaviour
 {
-    [SerializeField] protected Tank _tank;
+    [SerializeField] protected TankView _tank;
     [SerializeField] protected ColorController _colorController;
     [SerializeField] protected float _changingSpeed;
 
@@ -30,7 +30,7 @@ public class Food : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        if (collider.TryGetComponent<Tank>(out _tank))
+        if (collider.TryGetComponent<TankView>(out _tank))
         {
             IsApproached = true;
             Approached?.Invoke(IsApproached);
@@ -52,7 +52,7 @@ public class Food : MonoBehaviour
         }
     }
 
-    public void Init(Tank tank, ColorController colorController)
+    public void Init(TankView tank, ColorController colorController)
     {
         _tank = tank;
         _colorController = colorController;

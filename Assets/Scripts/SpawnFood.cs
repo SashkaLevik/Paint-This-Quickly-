@@ -6,7 +6,7 @@ public class SpawnFood : MonoBehaviour
 {
     [SerializeField] private GameObject _table;
     [SerializeField] private GameObject[] _tamplate;
-    [SerializeField] protected Tank _tank;
+    [SerializeField] protected TankView _tank;
     [SerializeField] protected ColorController _colorController;
 
     private void Start()

@@ -25,7 +25,7 @@ public class Braun : Platform
     {
         if (isApproached)
         {
-            ChangeTankColor(_braun);
+            _tankView.ChangeTankColor(_braun);
         }
     }
 }

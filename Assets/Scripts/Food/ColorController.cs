@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColorController : MonoBehaviour
 {
-    [SerializeField] protected Tank _tank;
+    [SerializeField] protected TankView _tank;
 
     public List<Color> colors = new List<Color>();
 

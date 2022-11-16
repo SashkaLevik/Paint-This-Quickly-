@@ -25,7 +25,7 @@ public class Pink : Platform
     {
         if (isApproached)
         {
-            ChangeTankColor(_pink);
+            _tankView.ChangeTankColor(_pink);
         }
     }
 }
