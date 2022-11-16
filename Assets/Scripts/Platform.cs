@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class Platform : MonoBehaviour
 {
-    [SerializeField] protected TankView _tank;
+    //[SerializeField] protected Tank _tank;
     [SerializeField] protected View _tankView;
     [SerializeField] protected ColorController _colorController;
     [SerializeField] protected float _colorChangingSpeed;
@@ -18,7 +18,7 @@ public class Platform : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        if (collider.TryGetComponent<TankView>(out _tank))
+        if (collider.TryGetComponent<View>(out _tankView))
         {
             IsApproached = true;
             Approached?.Invoke(IsApproached);
