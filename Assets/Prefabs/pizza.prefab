@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3398975635093066693}
   - component: {fileID: 3264368634640447202}
   - component: {fileID: 459185984819741465}
-  - component: {fileID: 3935460961678309640}
   - component: {fileID: 7732483066738572385}
+  - component: {fileID: 7188872057225054465}
   m_Layer: 0
   m_Name: crust
   m_TagString: Untagged
@@ -85,22 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3935460961678309640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930929609394205933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53591efb56643e44aca0a48f1aa978d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tank: {fileID: 0}
-  _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
-  IsFilled: 0
 --- !u!65 &7732483066738572385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,6 +98,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.024136689, y: 0.030721508, z: 0.0012308068}
   m_Center: {x: -0.0003895452, y: -0.007540805, z: 0.0004519706}
+--- !u!114 &7188872057225054465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930929609394205933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tank: {fileID: 0}
+  _view: {fileID: 0}
+  _foodColor: {r: 1, g: 1, b: 0, a: 1}
+  _colorController: {fileID: 0}
+  _changingSpeed: 3
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1262507620834434778
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,8 +127,8 @@ GameObject:
   - component: {fileID: 4747081877517833293}
   - component: {fileID: 2509037528677275623}
   - component: {fileID: 8002736692618889528}
-  - component: {fileID: 1920246749444171521}
   - component: {fileID: 8570636132738775134}
+  - component: {fileID: 7914703571102606958}
   m_Layer: 0
   m_Name: Peperoni
   m_TagString: Untagged
@@ -199,22 +201,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1920246749444171521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262507620834434778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bfc19f35fdd8d0448c22e3ef54559a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tank: {fileID: 0}
-  _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
-  IsFilled: 0
 --- !u!65 &8570636132738775134
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -228,6 +214,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1134601, y: 0.12460291, z: 0.014930606}
   m_Center: {x: -0.00043005036, y: -0.025902107, z: 0.009057586}
+--- !u!114 &7914703571102606958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262507620834434778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tank: {fileID: 0}
+  _view: {fileID: 0}
+  _foodColor: {r: 1, g: 0, b: 0, a: 1}
+  _colorController: {fileID: 0}
+  _changingSpeed: 3
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2402941399259977737
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,8 +415,8 @@ GameObject:
   - component: {fileID: 8065345176641830234}
   - component: {fileID: 7853815739373510913}
   - component: {fileID: 4156358734865767752}
-  - component: {fileID: 9220937594407368684}
   - component: {fileID: 4374483868675797620}
+  - component: {fileID: 8934776069653859238}
   m_Layer: 0
   m_Name: pizza dough
   m_TagString: Untagged
@@ -485,22 +489,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &9220937594407368684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3866601748753158062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53591efb56643e44aca0a48f1aa978d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tank: {fileID: 0}
-  _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
-  IsFilled: 0
 --- !u!65 &4374483868675797620
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -514,6 +502,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.025880387, y: 0.025974525, z: 0.0027242638}
   m_Center: {x: 0.0032477735, y: -0.0023173024, z: 0.0013621311}
+--- !u!114 &8934776069653859238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3866601748753158062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tank: {fileID: 0}
+  _view: {fileID: 0}
+  _foodColor: {r: 1, g: 1, b: 0, a: 1}
+  _colorController: {fileID: 0}
+  _changingSpeed: 3
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &6197068906880627709
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6722671355420780871}
   - component: {fileID: 9053891374843950247}
+  - component: {fileID: 6545892896774741876}
   m_Layer: 0
   m_Name: pizza
   m_TagString: Untagged
@@ -563,3 +570,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.53108305, y: 0.49693143, z: 1.1213388}
   m_Center: {x: 0.00083729625, y: 0.25153428, z: 0.47753215}
+--- !u!114 &6545892896774741876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197068906880627709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d677d5ebad516af4a81c8c34f7a067a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  Check: 0
+  Reward: 1

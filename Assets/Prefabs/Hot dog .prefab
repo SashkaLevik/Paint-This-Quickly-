@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 796116542921102148}
   - component: {fileID: 2517789433592401971}
   - component: {fileID: 1204601367076217431}
-  - component: {fileID: 2829824824168362474}
+  - component: {fileID: 6633566058251531665}
   m_Layer: 0
   m_Name: Sausage
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.15087323, y: 0.22819908, z: 0.034154374}
   m_Center: {x: -0.011491583, y: -0.032375433, z: 0.032010574}
---- !u!114 &2829824824168362474
+--- !u!114 &6633566058251531665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,13 +107,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3411014273028256487}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bfc19f35fdd8d0448c22e3ef54559a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tank: {fileID: 0}
+  _view: {fileID: 0}
+  _foodColor: {r: 1, g: 0, b: 0, a: 1}
   _colorController: {fileID: 0}
-  _changingSpeed: 2
-  IsFilled: 0
+  _changingSpeed: 3
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &4566405837829803358
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +300,7 @@ GameObject:
   - component: {fileID: 4306190596321694757}
   - component: {fileID: 890666777046558444}
   - component: {fileID: 7281846498841365378}
-  - component: {fileID: 7570750003835201806}
+  - component: {fileID: 3844232669334385079}
   m_Layer: 0
   m_Name: Bun
   m_TagString: Untagged
@@ -384,7 +386,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.11100505, y: 0.07565281, z: 0.02396577}
   m_Center: {x: -0.0007890675, y: -0.007895243, z: -0.01081726}
---- !u!114 &7570750003835201806
+--- !u!114 &3844232669334385079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -393,13 +395,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4706484935482105523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f03cc7ddc3abff45908e2bbf6379756, type: 3}
+  m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tank: {fileID: 0}
+  _view: {fileID: 0}
+  _foodColor: {r: 1, g: 0.49803922, b: 0, a: 1}
   _colorController: {fileID: 0}
-  _changingSpeed: 2
-  IsFilled: 0
+  _changingSpeed: 3
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8140044895524563904
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,6 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8916264252936384890}
   - component: {fileID: 1700337650252236287}
+  - component: {fileID: 6656839790191705106}
   m_Layer: 0
   m_Name: 'Hot dog '
   m_TagString: Untagged
@@ -448,3 +453,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7274387, y: 0.69136024, z: 1.9199777}
   m_Center: {x: -0.023195863, y: 0.37856042, z: 0.00059723854}
+--- !u!114 &6656839790191705106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8140044895524563904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d677d5ebad516af4a81c8c34f7a067a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  Check: 0
+  Reward: 1

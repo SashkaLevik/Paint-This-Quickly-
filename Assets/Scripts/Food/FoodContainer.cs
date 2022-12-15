@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FoodContainer : MonoBehaviour
 {
-    [SerializeField] private Food _food;
+    [SerializeField] private FoodPiece _food;
 
-    public Food food => _food;
+    public FoodPiece food => _food;
 
     public List<Component> Container = new List<Component>();
 

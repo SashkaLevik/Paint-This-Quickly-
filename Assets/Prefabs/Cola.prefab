@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8750191355031577509}
   - component: {fileID: 4476584890361691816}
   - component: {fileID: 4101989213097633935}
-  - component: {fileID: 5123693147109544110}
+  - component: {fileID: 4446054493968220259}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -181,7 +181,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.09256747, y: 0.09374086, z: 0.037291303}
   m_Center: {x: -0.0017343777, y: 0.0035631782, z: 0.019280653}
---- !u!114 &5123693147109544110
+--- !u!114 &4446054493968220259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,13 +190,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 258416774575300359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a193bc683d2fe0247a8a9972788d1e5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tank: {fileID: 0}
+  _view: {fileID: 0}
+  _foodColor: {r: 0.5019608, g: 0, b: 0.5019608, a: 1}
   _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
-  IsFilled: 0
+  _changingSpeed: 3
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &471756006661696797
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,6 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5513371122609825340}
   - component: {fileID: 5836461241830439779}
+  - component: {fileID: 4065176093753828524}
   m_Layer: 0
   m_Name: Cola
   m_TagString: Untagged
@@ -420,6 +423,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.4871235, z: 1}
   m_Center: {x: 0, y: 0.7772088, z: 0}
+--- !u!114 &4065176093753828524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172592528225893510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d677d5ebad516af4a81c8c34f7a067a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  Check: 0
+  Reward: 1
 --- !u!1 &8768789086761144279
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,8 +449,8 @@ GameObject:
   - component: {fileID: 1671786695469849574}
   - component: {fileID: 104067938931784082}
   - component: {fileID: 2952759456277133064}
-  - component: {fileID: 8944834654563302205}
   - component: {fileID: 2932719359524428607}
+  - component: {fileID: 1664293133921571219}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -505,22 +523,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8944834654563302205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8768789086761144279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53591efb56643e44aca0a48f1aa978d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tank: {fileID: 0}
-  _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
-  IsFilled: 0
 --- !u!65 &2932719359524428607
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -534,3 +536,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.08570729}
   m_Center: {x: 0, y: 0.024906978, z: 0.057157397}
+--- !u!114 &1664293133921571219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8768789086761144279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tank: {fileID: 0}
+  _view: {fileID: 0}
+  _foodColor: {r: 1, g: 1, b: 0, a: 1}
+  _colorController: {fileID: 0}
+  _changingSpeed: 3
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}

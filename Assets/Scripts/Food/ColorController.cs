@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ColorController : MonoBehaviour
 {
-    [SerializeField] protected TankView _tank;
-
+    [SerializeField] protected Tank _tank;
     public List<Color> colors = new List<Color>();
 
     protected Color _tankColor;
@@ -17,7 +16,8 @@ public class ColorController : MonoBehaviour
     private Color _blueColor = new Color32(0, 0, 255, 255);
     private Color _skyColor = new Color32(0, 255, 255, 255);
     private Color _purpleColor = new Color32(128, 0, 128, 255);
-    private Color _braunColor = new Color32(139, 69, 19, 255);
+    private Color _braunColor = new Color32(128, 78, 32, 255);
+
 
     private void Start()
     {

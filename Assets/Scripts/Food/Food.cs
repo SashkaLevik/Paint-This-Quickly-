@@ -1,68 +1,57 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using DG.Tweening;
 
 public class Food : MonoBehaviour
 {
-    [SerializeField] protected TankView _tank;
-    [SerializeField] protected ColorController _colorController;
-    [SerializeField] protected float _changingSpeed;
+    [SerializeField] private Player _player;
 
-    public Color DefaultColor;
+    private bool _isCooked;
+    private int _reward = 10;
 
-    public bool IsFilled;
+    private FoodPiece[] _foodPieces;
 
-    private Renderer _renderer;
+    public event UnityAction<Food> CookedFood;
 
-    public event UnityAction<bool> Approached;
+    public int Reward => _reward;
 
-    public Renderer Renderer => _renderer;
-
-    public bool IsApproached { get; private set; }
-
-    private void Start()
+    private void Update()
     {
-        _renderer = GetComponent<Renderer>();
-        DefaultColor = new Color32(217, 203, 203, 255);
+        GetPaintedFood();
+        Cooked();
+    }        
+
+    public void Init(Player player)
+    {
+        _player = player;
     }
 
-    public void OnTriggerEnter(Collider collider)
+    private void GetPaintedFood()
     {
-        if (collider.TryGetComponent<TankView>(out _tank))
+        _foodPieces = this.GetComponentsInChildren<FoodPiece>();
+
+        foreach (var piece in _foodPieces)
         {
-            IsApproached = true;
-            Approached?.Invoke(IsApproached);
-        }
+            if (piece.IsPainted == false)
+            {
+                _isCooked = false;
+                break;
+            }
+            else
+            {
+                _isCooked = true;
+            }
+        }       
     }
 
-    public void OnTriggerExit(Collider other)
+    private void Cooked()
     {
-        IsApproached = false;
-        Approached?.Invoke(IsApproached);
-    }
-
-    public void ChangeFoodColor(Color color)
-    {
-        if (_colorController.TryGetColor(color) && CompareColor(color) && _tank.IsFilled )
+        if (_isCooked == true)
         {
-            this._renderer.material.DOColor(color, _changingSpeed);
-            _tank.ChangeScale();
+            CookedFood?.Invoke(this);
+            //Destroy(gameObject);
         }
-    }
-
-    public void Init(TankView tank, ColorController colorController)
-    {
-        _tank = tank;
-        _colorController = colorController;
-    }
-
-    private bool CompareColor(Color color)
-    {
-        bool isPaited = false;
-        if (this._renderer.material.color != color)
-            isPaited = true;
-        return isPaited;
     }
 }

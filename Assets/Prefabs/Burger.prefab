@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8101253184477370478}
   - component: {fileID: 3444007263499084855}
   - component: {fileID: 3495502669741092009}
-  - component: {fileID: 3441794467551928605}
   - component: {fileID: 7961900380860685916}
+  - component: {fileID: 5720414848547088027}
   m_Layer: 0
   m_Name: durger patty
   m_TagString: Untagged
@@ -85,22 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3441794467551928605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4557019135073038904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d310420b2bdeaa041a0ed357b6f9257a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tank: {fileID: 0}
-  _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
-  IsFilled: 0
 --- !u!65 &7961900380860685916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -114,6 +98,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.07311934, y: 0.06810668, z: 0.015222927}
   m_Center: {x: -0.0004313594, y: 0.0013781422, z: 0.01361341}
+--- !u!114 &5720414848547088027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557019135073038904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tank: {fileID: 0}
+  _view: {fileID: 0}
+  _foodColor: {r: 0.5019608, g: 0.30588236, b: 0.1254902, a: 1}
+  _colorController: {fileID: 0}
+  _changingSpeed: 3
+  _foodSpawner: {fileID: 0}
+  IsPainted: 0
+  Check: 0
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5357068214694364840
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,8 +130,8 @@ GameObject:
   - component: {fileID: 7738445411469616643}
   - component: {fileID: 7905091005726586609}
   - component: {fileID: 2044257770253217891}
-  - component: {fileID: 8950535921706805103}
   - component: {fileID: 5922444876986836043}
+  - component: {fileID: 346213465963618031}
   m_Layer: 0
   m_Name: Buns
   m_TagString: Untagged
@@ -199,22 +204,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8950535921706805103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5357068214694364840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f03cc7ddc3abff45908e2bbf6379756, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tank: {fileID: 0}
-  _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
-  IsFilled: 0
 --- !u!65 &5922444876986836043
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -228,6 +217,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.068840876, y: 0.06630427, z: 0.020905118}
   m_Center: {x: -0.00105453, y: 0.00007740124, z: 0.010481612}
+--- !u!114 &346213465963618031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5357068214694364840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tank: {fileID: 0}
+  _view: {fileID: 0}
+  _foodColor: {r: 1, g: 0.49803922, b: 0, a: 1}
+  _colorController: {fileID: 0}
+  _changingSpeed: 3
+  _foodSpawner: {fileID: 0}
+  IsPainted: 0
+  Check: 0
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5818660664259531804
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +248,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6596605391353286310}
   - component: {fileID: 2654092410286354091}
+  - component: {fileID: 9020099247002621987}
   m_Layer: 0
   m_Name: Burger
   m_TagString: Untagged
@@ -277,6 +288,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.107808, y: 1.2971294, z: 1.1398269}
   m_Center: {x: 0.053903997, y: 0.67021596, z: -0.010770261}
+--- !u!114 &9020099247002621987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5818660664259531804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d677d5ebad516af4a81c8c34f7a067a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Check: 0
+  paintFoods: []
 --- !u!1 &6007473531748156822
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,8 +487,8 @@ GameObject:
   - component: {fileID: 8323328796313453121}
   - component: {fileID: 3855945260442884691}
   - component: {fileID: 6273148702865620897}
-  - component: {fileID: 4592239093281935541}
   - component: {fileID: 2344462481481760499}
+  - component: {fileID: 4337184941429742655}
   m_Layer: 0
   m_Name: cheeze
   m_TagString: Untagged
@@ -536,22 +561,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4592239093281935541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6670182182872154718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53591efb56643e44aca0a48f1aa978d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tank: {fileID: 0}
-  _colorController: {fileID: 0}
-  _colorChangingSpeed: 2
-  IsFilled: 0
 --- !u!65 &2344462481481760499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -565,3 +574,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0622414, y: 0.056874696, z: 0.011819941}
   m_Center: {x: 0.00033958346, y: 0.0030771624, z: 0.008199381}
+--- !u!114 &4337184941429742655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6670182182872154718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tank: {fileID: 0}
+  _view: {fileID: 0}
+  _foodColor: {r: 1, g: 1, b: 0, a: 1}
+  _colorController: {fileID: 0}
+  _changingSpeed: 3
+  _foodSpawner: {fileID: 0}
+  IsPainted: 0
+  Check: 0
+  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
