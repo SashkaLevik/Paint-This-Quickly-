@@ -8,6 +8,7 @@ public class FoodSpawner : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Tank _tank;
     [SerializeField] private View _view;
+    [SerializeField] private HungryHead _hungryHead;
     [SerializeField] private ColorController _colorController;
     [SerializeField] private UpgradeScreen _upgradeScreen;
     [SerializeField] private GameObject[] _tamplate;
@@ -26,7 +27,7 @@ public class FoodSpawner : MonoBehaviour
         {
             int randomPos = Random.Range(0, _spawnPoints.Count);
             Food food = Instantiate(tamplate[i], _spawnPoints[randomPos].transform.position, tamplate[i].transform.rotation).GetComponent<Food>();
-            food.Init(_player);
+            food.Init(_player, _hungryHead);
             food.CookedFood += OnFoodCooked;
             _spawnPoints.RemoveAt(randomPos);
             _foodPieces = food.GetComponentsInChildren<FoodPiece>();            

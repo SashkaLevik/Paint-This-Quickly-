@@ -9,13 +9,12 @@ public class FoodPiece : MonoBehaviour
     [SerializeField] private Tank _tank;
     [SerializeField] private View _view;
     [SerializeField] private Color _foodColor;
-    [SerializeField] protected ColorController _colorController;
-    [SerializeField] protected float _changingSpeed;
+    [SerializeField] private ColorController _colorController;
+    [SerializeField] private float _changingSpeed;
 
     private bool _isPainted;
 
-    public Color _tankColor;
-    private Color DefaultColor;
+    private Color _defaultColor;
     private Renderer _renderer;
 
     public event UnityAction<bool> Approached;
@@ -38,13 +37,8 @@ public class FoodPiece : MonoBehaviour
     private void Start()
     {
         _renderer = GetComponent<Renderer>();
-        DefaultColor = new Color32(217, 203, 203, 255);
-    }
-
-    private void Update()
-    {
-        //_tankColor = _tank.CurrentColor;
-    }
+        _defaultColor = new Color32(217, 203, 203, 255);
+    }    
 
     public void OnTriggerEnter(Collider collider)
     {
@@ -92,13 +86,5 @@ public class FoodPiece : MonoBehaviour
         if (this._renderer.material.color != color)
             isPainted = true;
         return isPainted;
-    }
-
-    private bool TryGetColor(Color color)
-    {
-        bool result = false;
-        if (_tankColor == color)
-            result = true;
-        return result;
-    }
+    } 
 }
