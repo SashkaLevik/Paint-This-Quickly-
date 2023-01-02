@@ -29,12 +29,12 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        _upgradeScreen.LevelUp += OnLevelUp;
+        _upgradeScreen.SpeedLevelUp += OnLevelUp;
     }
 
     private void OnDisable()
     {
-        _upgradeScreen.LevelUp -= OnLevelUp;
+        _upgradeScreen.SpeedLevelUp -= OnLevelUp;
     }
 
     private void MoveLogic()

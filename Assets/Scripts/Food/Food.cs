@@ -22,8 +22,8 @@ public class Food : MonoBehaviour
     private void Update()
     {
         GetPaintedFood();
-        //OnCooked();
-        Cooked();
+        OnCooked();
+        //Cooked();
     }        
 
     public void Init(Player player, HungryHead hungryHead)
@@ -50,6 +50,15 @@ public class Food : MonoBehaviour
         }       
     }
 
+    private void Cooked()
+    {
+        if (_isCooked == true)
+        {
+            CookedFood?.Invoke(this);
+            tween = transform.DOMove(_hungryHead.transform.position, _moveSpeed).OnComplete(() => gameObject.SetActive(false)) ;
+        }
+    }
+
     private void OnCooked()
     {
         if (_isCooked == true)
@@ -68,18 +77,9 @@ public class Food : MonoBehaviour
         Invoke("Devour", 3.5f);
     }
 
-    private void Cooked()
-    {
-        if (_isCooked == true)
-        {
-            CookedFood?.Invoke(this);
-            tween = transform.DOMove(_hungryHead.transform.position, _moveSpeed).OnComplete(() => gameObject.SetActive(false));
-            Invoke("Devour", 3.5f);
-        }
-    }
 
     private void Devour()
     {
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

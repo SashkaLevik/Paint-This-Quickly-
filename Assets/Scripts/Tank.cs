@@ -26,12 +26,12 @@ public class Tank : MonoBehaviour
 
     private void OnEnable()
     {
-        _upgradeScreen.LevelUp += OnLevelUp;
+        _upgradeScreen.TankLevelUp += OnLevelUp;
     }
 
     private void OnDisable()
     {
-        _upgradeScreen.LevelUp -= OnLevelUp;
+        _upgradeScreen.TankLevelUp -= OnLevelUp;
     }
 
     private void Start()

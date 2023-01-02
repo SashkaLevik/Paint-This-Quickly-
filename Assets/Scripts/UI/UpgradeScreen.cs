@@ -18,7 +18,8 @@ public class UpgradeScreen : MonoBehaviour
     private int _speedUpgradeCost = 10;
     private int _tankUpgradeCost = 10;
 
-    public event UnityAction LevelUp;
+    public event UnityAction SpeedLevelUp;
+    public event UnityAction TankLevelUp;
 
     private void Start()
     {
@@ -40,8 +41,7 @@ public class UpgradeScreen : MonoBehaviour
     private void OnLevelUpButton(int price)
     {
         if (_money >= price)
-        {
-            LevelUp?.Invoke();
+        {            
             _money -= price;
             _moneyCount.text = _money.ToString();
         }
@@ -50,11 +50,13 @@ public class UpgradeScreen : MonoBehaviour
     private void OnTankLevelUp()
     {
         OnLevelUpButton(_tankUpgradeCost);
+        TankLevelUp?.Invoke();
     }
 
     private void OnSpeedLevelUp()
     {
         OnLevelUpButton(_speedUpgradeCost);
+        SpeedLevelUp?.Invoke();
     }
 
     public void AddMoney(int money)
