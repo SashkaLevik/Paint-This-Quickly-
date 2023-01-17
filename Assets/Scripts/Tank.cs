@@ -8,9 +8,9 @@ public class Tank : MonoBehaviour
 {
     [SerializeField] private Color _currentColor;
     [SerializeField]private Color _defaultColor;
-    [SerializeField] private UpgradeScreen _upgradeScreen;
+    [SerializeField] private Upgrades _upgrades;
 
-    private float _fullTank = 0.1f;
+    public float _fullTank = 0.1f;
     private float _emtyTank = 0.1f;
     private float _scaleChangeValue = 0.1f;
     private float _levelUpValue = 0.1f;
@@ -26,12 +26,12 @@ public class Tank : MonoBehaviour
 
     private void OnEnable()
     {
-        _upgradeScreen.TankLevelUp += OnLevelUp;
+        _upgrades.TankLevelUp += OnLevelUp;
     }
 
     private void OnDisable()
     {
-        _upgradeScreen.TankLevelUp -= OnLevelUp;
+        _upgrades.TankLevelUp -= OnLevelUp;
     }
 
     private void Start()

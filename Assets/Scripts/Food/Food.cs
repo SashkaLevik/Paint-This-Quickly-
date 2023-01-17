@@ -9,21 +9,18 @@ public class Food : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private HungryHead _hungryHead;
 
+    private float _moveSpeed = 3f;
     private bool _isCooked;
     private int _reward = 10;
-    public float _moveSpeed = 3f;
 
-    private FoodPiece[] _foodPieces;
-
-    public event UnityAction<Food> CookedFood;
-    Tween tween;
+    public event UnityAction<Food> CookedFood;    
     public int Reward => _reward;
 
+    private FoodPiece[] _foodPieces;
     private void Update()
     {
         GetPaintedFood();
         OnCooked();
-        //Cooked();
     }        
 
     public void Init(Player player, HungryHead hungryHead)
@@ -48,16 +45,7 @@ public class Food : MonoBehaviour
                 _isCooked = true;
             }
         }       
-    }
-
-    private void Cooked()
-    {
-        if (_isCooked == true)
-        {
-            CookedFood?.Invoke(this);
-            tween = transform.DOMove(_hungryHead.transform.position, _moveSpeed).OnComplete(() => gameObject.SetActive(false)) ;
-        }
-    }
+    }       
 
     private void OnCooked()
     {
@@ -76,7 +64,6 @@ public class Food : MonoBehaviour
         yield return null;
         Invoke("Devour", 3.5f);
     }
-
 
     private void Devour()
     {

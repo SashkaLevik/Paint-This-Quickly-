@@ -7,14 +7,16 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private UpgradeScreen _upgradeScreen;
     [SerializeField] private float _rotateSpeed;
+    [SerializeField] private Upgrades _upgrades;    
 
-    public float _moveSpeed = 4f;
-    private float _levelUpValue = 1f;
+    public float _moveSpeed = 4;
+    private float _levelUpValue = 0.5f;
 
     private Animator _animator;
     private Rigidbody _rigidbody;
+
+    public float MoveSpeed => _moveSpeed;
 
     private void Start()
     {
@@ -25,16 +27,16 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         MoveLogic();
-    }
+    }    
 
     private void OnEnable()
     {
-        _upgradeScreen.SpeedLevelUp += OnLevelUp;
+        _upgrades.SpeedLevelUp += OnLevelUp;
     }
 
     private void OnDisable()
     {
-        _upgradeScreen.SpeedLevelUp -= OnLevelUp;
+        _upgrades.SpeedLevelUp -= OnLevelUp;
     }
 
     private void MoveLogic()
@@ -58,5 +60,22 @@ public class Player : MonoBehaviour
     private void OnLevelUp()
     {
         _moveSpeed += _levelUpValue;
+    }    
+
+    public void SetPosition()
+    {
+        transform.position = new Vector3(0, 0, 0);
+    }
+
+    public void SaveGame()
+    {
+        SaveSystem.SaveGame(this);
+    }
+
+    public void LoadGame()
+    {
+        GameData data = SaveSystem.LoadGame();
+
+        _moveSpeed = data.speedLevel;
     }
 }

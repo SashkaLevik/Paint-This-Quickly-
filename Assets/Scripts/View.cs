@@ -9,6 +9,9 @@ public class View : MonoBehaviour
     [SerializeField] protected float _changingSpeed;
     [SerializeField] private ColorController _colorController;
     [SerializeField] private UpgradeScreen _upgradeScreen;
+    [SerializeField] private AudioSource _vacuumSound;
+    [SerializeField] private AudioSource _fillSound;
+    [SerializeField] private AudioSource _paintSound;
     
     private bool _isFilled = false;
     public float _currentCapacity;
@@ -28,6 +31,7 @@ public class View : MonoBehaviour
         {
             _renderer.material.DOColor(color, _changingSpeed);
             transform.DOScaleY(scale, _changingSpeed);
+            _fillSound.Play();
             _currentCapacity = scale;
             _isFilled = true;
         }        
@@ -39,6 +43,7 @@ public class View : MonoBehaviour
         {
             _renderer.material.DOColor(color, _changingSpeed);
             transform.DOScaleY(scale, _changingSpeed);
+            _vacuumSound.Play();
             _currentCapacity = scale;
             _isFilled = false;
         }
@@ -51,10 +56,12 @@ public class View : MonoBehaviour
             float changeValue = _currentCapacity - _tank.ScaleChangeValue;
             transform.DOScaleY(changeValue, _changingSpeed);
             _currentCapacity = changeValue;
+            _paintSound.Play();
         }
         else
         {
             _renderer.material.color = _tank.DefaultColor;
+            _paintSound.Play();
             _isFilled = false;
         }
     }
