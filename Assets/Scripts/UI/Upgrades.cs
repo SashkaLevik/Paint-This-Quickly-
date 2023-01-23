@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,20 +13,25 @@ public class Upgrades : MonoBehaviour
     [SerializeField] private TMP_Text _speedLevelText;
     [SerializeField] private TMP_Text _tankLevelText;
     [SerializeField] private GameObject _panel;
+    [SerializeField] private int _money;
 
     private int _speedLevel;
     private int _tankLevel;
-    public int _money = 50;
     private int _speedUpgradeCost = 10;
-    private int _tankUpgradeCost = 50;
+    private int _tankUpgradeCost = 10;
+
+    public int Money => _money;
+    public int SpeedLevel => _speedLevel;
+    public int TankLevel => _tankLevel;
 
     public event UnityAction SpeedLevelUp;
-    public event UnityAction TankLevelUp;   
+    public event UnityAction TankLevelUp;
 
     private void Start()
     {
-        _panel.SetActive(false);        
-    }    
+        _panel.SetActive(false);
+        _moneyCount.text = _money.ToString();        
+    }
 
     private void OnEnable()
     {
@@ -42,6 +45,24 @@ public class Upgrades : MonoBehaviour
         _speedLevelUp.onClick.RemoveListener(OnSpeedLevelUp);
     }    
    
+    public void InitMoney(int money)
+    {
+        _money = money;
+        _moneyCount.text = _money.ToString();
+    }
+
+    public void InitSpeed(int speedLevel)
+    {
+        _speedLevel = speedLevel;
+        _speedLevelText.text = _speedLevel.ToString();
+    }
+
+    public void InitTank(int tankLevel)
+    {
+        _tankLevel = tankLevel;
+        _tankLevelText.text = _tankLevel.ToString();
+    }
+
     private bool TryUpgrade(int price)
     {
         if (_money >= price)
@@ -52,11 +73,12 @@ public class Upgrades : MonoBehaviour
         }
         return false;
     }
+
     private void OnSpeedLevelUp()
     {
         if (TryUpgrade(_speedUpgradeCost))
         {
-            _speedLevel++;
+            _speedLevel+=1;
             _speedLevelText.text = _speedLevel.ToString();
             SpeedLevelUp?.Invoke();
         }
@@ -71,7 +93,6 @@ public class Upgrades : MonoBehaviour
             TankLevelUp?.Invoke();
         }
     }
-
 
     public void AddMoney(int money)
     {

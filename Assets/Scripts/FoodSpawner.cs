@@ -15,8 +15,12 @@ public class FoodSpawner : MonoBehaviour
     [SerializeField] private List<Transform> _spawnPoints = new List<Transform>();
     [SerializeField] private List<Food> _foods = new List<Food>();
     [SerializeField] private AudioSource _winSound;
-    
+    [SerializeField] private SaveSystem _saveSystem;
+
+    private int _currentLevel;
+
     private FoodPiece[] _foodPieces;
+    public int CurrentLevel => _currentLevel;
 
     public event UnityAction LevelCompleted;
 
@@ -39,6 +43,11 @@ public class FoodSpawner : MonoBehaviour
         }
     }
 
+    public void Init(int currentLevel)
+    {
+        _currentLevel = currentLevel;
+    }
+
     private void OnFoodCooked(Food food)
     {
         food.CookedFood -= OnFoodCooked;
@@ -56,6 +65,9 @@ public class FoodSpawner : MonoBehaviour
     private void OnLevelComplete()
     {
         _player.SetPosition();
+        _currentLevel++;
         LevelCompleted?.Invoke();
+        _saveSystem.Save();
+        Debug.Log("LevelComplet");
     }
 }

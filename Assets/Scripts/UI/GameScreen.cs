@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class GameScreen : MonoBehaviour
@@ -11,9 +10,9 @@ public class GameScreen : MonoBehaviour
     [SerializeField] private Image _gamePause;
     [SerializeField] private Image _soundOn;
     [SerializeField] private Image _soundOff;
-    [SerializeField] private Player _player;
-    [SerializeField] private Button _save;
-    [SerializeField] private Button _load;
+    [SerializeField] private Player _player;    
+    [SerializeField] private Button _reset;
+    [SerializeField] private SaveSystem _saveSystem;
 
     private void Start()
     {
@@ -25,12 +24,14 @@ public class GameScreen : MonoBehaviour
     {
         _pause.onClick.AddListener(OnPauseButton);
         _sound.onClick.AddListener(OnSoundButton);        
+        _reset.onClick.AddListener(OnReset);
     }
 
     private void OnDisable()
     {
         _pause.onClick.RemoveListener(OnPauseButton);
-        _sound.onClick.RemoveListener(OnSoundButton);        
+        _sound.onClick.RemoveListener(OnSoundButton);
+        _reset.onClick.RemoveListener(OnReset);
     }
 
     private void OnPauseButton()
@@ -63,5 +64,10 @@ public class GameScreen : MonoBehaviour
             _soundOn.gameObject.SetActive(true);
             AudioListener.volume = 1;
         }
-    }    
+    }   
+
+    private void OnReset()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }

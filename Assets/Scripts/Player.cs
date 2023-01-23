@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,9 +6,10 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _rotateSpeed;
-    [SerializeField] private Upgrades _upgrades;    
-
-    public float _moveSpeed = 4;
+    [SerializeField] private Upgrades _upgrades;
+    [SerializeField] private GameScreen _gameScreen;
+    [SerializeField] private float _moveSpeed;
+    
     private float _levelUpValue = 0.5f;
 
     private Animator _animator;
@@ -21,7 +20,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();        
     }
 
     private void FixedUpdate()
@@ -38,6 +37,11 @@ public class Player : MonoBehaviour
     {
         _upgrades.SpeedLevelUp -= OnLevelUp;
     }
+
+    public void Init(float speed)
+    {
+        _moveSpeed = speed;
+    }    
 
     private void MoveLogic()
     {
@@ -59,23 +63,11 @@ public class Player : MonoBehaviour
 
     private void OnLevelUp()
     {
-        _moveSpeed += _levelUpValue;
+        _moveSpeed += _levelUpValue;               
     }    
 
     public void SetPosition()
     {
         transform.position = new Vector3(0, 0, 0);
-    }
-
-    public void SaveGame()
-    {
-        SaveSystem.SaveGame(this);
-    }
-
-    public void LoadGame()
-    {
-        GameData data = SaveSystem.LoadGame();
-
-        _moveSpeed = data.speedLevel;
-    }
+    }    
 }

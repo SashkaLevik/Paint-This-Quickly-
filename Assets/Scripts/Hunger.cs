@@ -11,7 +11,7 @@ public class Hunger : MonoBehaviour
     [SerializeField] private float _hungerSpeed;
     [SerializeField] private FoodSpawner _spawner;
 
-    Tween tweenSlider;
+    private Tween _tweenSlider;
 
     public event UnityAction Starved;
 
@@ -20,7 +20,6 @@ public class Hunger : MonoBehaviour
         ChangeHunger();
     }
     
-
     private void OnEnable()
     {
         _spawner.LevelCompleted += ResetSlider;
@@ -33,13 +32,13 @@ public class Hunger : MonoBehaviour
 
     private void ChangeHunger()
     {
-        tweenSlider = _slider.DOValue(_slider.maxValue, _hungerSpeed).SetEase(Ease.Linear).OnComplete(() => Starved?.Invoke());
+        _tweenSlider = _slider.DOValue(_slider.maxValue, _hungerSpeed).SetEase(Ease.Linear).OnComplete(() => Starved?.Invoke());
     }
 
     public void ResetSlider()
     {
         Debug.Log("Reset");
-        tweenSlider.Rewind();
+        _tweenSlider.Rewind();
         ChangeHunger();
         _slider.value = _slider.minValue;
     }    

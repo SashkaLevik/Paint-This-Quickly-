@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -73,6 +72,27 @@ public class LevelScreen : MonoBehaviour
     {
         _levelPanel.SetActive(true);
         Time.timeScale = 0;
+
+        for (int i = 0; i < _foodSpawner.CurrentLevel; i++)
+        {
+            foreach (var button in _buttons)
+            {
+                if (button.interactable == false)
+                {
+                    button.interactable = true;
+                    break;
+                }
+            }
+
+            foreach (var image in _pathimages)
+            {
+                if (image.gameObject.activeSelf == false)
+                {
+                    image.gameObject.SetActive(true);
+                    break;
+                }
+            }
+        }
     }
 
     private void Return()

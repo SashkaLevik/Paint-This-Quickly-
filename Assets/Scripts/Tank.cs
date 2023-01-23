@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using DG.Tweening;
 
 public class Tank : MonoBehaviour
 {
     [SerializeField] private Color _currentColor;
-    [SerializeField]private Color _defaultColor;
+    [SerializeField] private Color _defaultColor;
     [SerializeField] private Upgrades _upgrades;
 
     public float _fullTank = 0.1f;
@@ -42,6 +38,11 @@ public class Tank : MonoBehaviour
     private void Update()
     {
         _currentColor = _renderer.material.color;
+    }
+
+    public void Init(float capacity)
+    {
+        _fullTank = capacity;
     }
 
     private void OnLevelUp()

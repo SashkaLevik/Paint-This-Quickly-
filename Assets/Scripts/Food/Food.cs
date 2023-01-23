@@ -9,14 +9,15 @@ public class Food : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private HungryHead _hungryHead;
 
-    private float _moveSpeed = 3f;
+    private float _flySpeed = 3f;
     private bool _isCooked;
     private int _reward = 10;
 
-    public event UnityAction<Food> CookedFood;    
+    private FoodPiece[] _foodPieces;
     public int Reward => _reward;
 
-    private FoodPiece[] _foodPieces;
+    public event UnityAction<Food> CookedFood;    
+
     private void Update()
     {
         GetPaintedFood();
@@ -59,7 +60,8 @@ public class Food : MonoBehaviour
 
     private IEnumerator FlyToHead()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _hungryHead.transform.position, _moveSpeed * Time.fixedDeltaTime);
+        yield return new WaitForSeconds(1);
+        transform.position = Vector3.MoveTowards(transform.position, _hungryHead.transform.position, _flySpeed * Time.fixedDeltaTime);
         CookedFood?.Invoke(this);
         yield return null;
         Invoke("Devour", 3.5f);
