@@ -58,15 +58,16 @@ public class FoodSpawner : MonoBehaviour
         {
             _winSound.Play();
             Debug.Log("LevelComplete");
-            Invoke("OnLevelComplete", 2f);
+            //Invoke("OnLevelComplete", 2f);
+            Invoke(nameof(OnLevelComplete), 2f);
         }
     }
     
     private void OnLevelComplete()
     {
         _player.SetPosition();
-        _currentLevel++;
         LevelCompleted?.Invoke();
+        _currentLevel++;
         _saveSystem.Save();
         Debug.Log("LevelComplet");
     }

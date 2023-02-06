@@ -6,23 +6,31 @@ using DG.Tweening;
 
 public class Tube : MonoBehaviour
 {
+    [SerializeField] private Player _player;
     [SerializeField] protected Tank _tank;
     [SerializeField] protected View _view;
     [SerializeField] protected Color _tubeColor;
     [SerializeField] protected float _colorChangingSpeed;
-    [SerializeField] private UpgradeScreen _upgradeScreen;
 
     public event UnityAction Approached;
 
+    private Rigidbody _rigidbody;
+
     public Color Color => _tubeColor;
+
+    private void Start()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
 
     public void OnTriggerEnter(Collider collider)
     {
         if (collider.TryGetComponent<Tank>(out _tank))
         {
             Approached?.Invoke();
+            //_player.LoadPaint();
         }
-    }
+    }    
 
     private void OnEnable()
     {

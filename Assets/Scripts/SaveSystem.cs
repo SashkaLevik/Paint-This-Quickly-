@@ -6,6 +6,7 @@ public class SaveSystem : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Tank _tank;
     [SerializeField] private FoodSpawner _foodSpawner;
+    [SerializeField] private Score _score;
 
     private const string SpeedKey = "Speed";
     private const string SpeedLevelKey = "SpeedLevel";
@@ -13,6 +14,7 @@ public class SaveSystem : MonoBehaviour
     private const string TankLevelKey = "TankLevel";
     private const string MoneyKey = "Money";
     private const string CurrentLevel = "CurrentLevel";
+    private const string Score = "Score";
 
     public void Save()
     {
@@ -22,6 +24,7 @@ public class SaveSystem : MonoBehaviour
         PlayerPrefs.SetFloat(SpeedKey, _player.MoveSpeed);
         PlayerPrefs.SetFloat(TankKey, _tank.FullTank);
         PlayerPrefs.SetInt(CurrentLevel, _foodSpawner.CurrentLevel);
+        PlayerPrefs.SetFloat(Score, _score.CurrentScore);
     }
 
     public void Load()
@@ -34,32 +37,9 @@ public class SaveSystem : MonoBehaviour
             _player.Init(PlayerPrefs.GetFloat(SpeedKey));
             _tank.Init(PlayerPrefs.GetFloat(TankKey));
             _foodSpawner.Init(PlayerPrefs.GetInt(CurrentLevel));
+            _score.Init(PlayerPrefs.GetFloat(Score));
         }
         else
             Debug.Log("Save not found");
-    }
-
-    //public void Save(GameData data)
-    //{
-    //    PlayerPrefs.SetFloat(SpeedKey, data.Speed);
-    //    //PlayerPrefs.SetFloat(TankKey, data.tankLevel);
-    //    PlayerPrefs.SetInt(MoneyKey, data.Money);
-    //    PlayerPrefs.Save();
-    //    Debug.Log("Save");
-    //}
-
-    //public GameData Load()
-    //{
-    //    var data = new GameData();
-
-    //    if (PlayerPrefs.HasKey(MoneyKey))
-    //    {
-    //        data.Speed = PlayerPrefs.GetFloat(SpeedKey);
-    //        //data.tankLevel = PlayerPrefs.GetFloat(TankKey);
-    //        data.Money = PlayerPrefs.GetInt(MoneyKey);
-    //    }
-    //    else
-    //        Debug.Log("NotFound");
-    //    return data;
-    //}
+    }    
 }

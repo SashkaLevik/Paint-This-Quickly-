@@ -22,8 +22,8 @@ public class Food : MonoBehaviour
     {
         GetPaintedFood();
         OnCooked();
-    }        
-
+    }
+   
     public void Init(Player player, HungryHead hungryHead)
     {
         _player = player;
@@ -63,8 +63,9 @@ public class Food : MonoBehaviour
         yield return new WaitForSeconds(1);
         transform.position = Vector3.MoveTowards(transform.position, _hungryHead.transform.position, _flySpeed * Time.fixedDeltaTime);
         CookedFood?.Invoke(this);
-        yield return null;
-        Invoke("Devour", 3.5f);
+        yield return new WaitForSeconds(1);
+        _hungryHead.BeginEat();
+        Devour();
     }
 
     private void Devour()

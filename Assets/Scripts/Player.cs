@@ -15,12 +15,24 @@ public class Player : MonoBehaviour
     private Animator _animator;
     private Rigidbody _rigidbody;
 
+    public const string IsRun = "IsRun";
+    public const string Load = "Load";
+
     public float MoveSpeed => _moveSpeed;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();        
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey("c"))
+        {
+            _animator.SetBool(IsRun, false);
+            _animator.SetTrigger(Load);
+        }
     }
 
     private void FixedUpdate()
@@ -41,7 +53,18 @@ public class Player : MonoBehaviour
     public void Init(float speed)
     {
         _moveSpeed = speed;
-    }    
+    }
+
+    public void LoadPaint()
+    {
+        _animator.SetBool(IsRun, false);
+        _animator.SetTrigger(Load);
+    }
+
+    public void SetPosition()
+    {
+        transform.position = new Vector3(0, 0, 0);
+    }
 
     private void MoveLogic()
     {
@@ -53,21 +76,16 @@ public class Player : MonoBehaviour
 
         if (moveVertical != 0 || moveHorizontal != 0)
         {
-            _animator.SetBool("IsRun", true);
+            _animator.SetBool(IsRun, true);
             transform.Translate(moveDirection * _moveSpeed * Time.fixedDeltaTime);
             transform.Rotate(rotate * _rotateSpeed * Time.fixedDeltaTime);
         }
         else
-            _animator.SetBool("IsRun", false);
+            _animator.SetBool(IsRun, false);
     }
 
     private void OnLevelUp()
     {
         _moveSpeed += _levelUpValue;               
-    }    
-
-    public void SetPosition()
-    {
-        transform.position = new Vector3(0, 0, 0);
-    }    
+    }           
 }

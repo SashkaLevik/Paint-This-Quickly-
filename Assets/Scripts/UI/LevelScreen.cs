@@ -29,6 +29,8 @@ public class LevelScreen : MonoBehaviour
 
     public event UnityAction ReturnToMenu;
 
+    public event UnityAction NextLevelStarted;
+
     private void Start()
     {
         _levelPanel.SetActive(false);
@@ -106,6 +108,7 @@ public class LevelScreen : MonoBehaviour
         _levelPanel.SetActive(false);
         _tapSound.Play();
         _foodSpawner.SpawnFood(tamplate);
+        NextLevelStarted?.Invoke();
         Time.timeScale = 1;
     }    
 

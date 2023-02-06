@@ -32,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2893678902484594351}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0516, y: 0.6775, z: -0.431}
+  m_LocalPosition: {x: -0.0516, y: 0.769, z: -0.263}
   m_LocalScale: {x: 0.4, y: 0.1, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100,9 +100,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.38049042
-  m_Height: 2
+  m_Height: 4.1535306
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -0.06293599}
+  m_Center: {x: 0, y: 1.7755038, z: -0.062935986}
 --- !u!114 &1769072916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   _currentColor: {r: 0, g: 0, b: 0, a: 0}
   _defaultColor: {r: 1, g: 0.87058824, b: 0.6784314, a: 1}
   _upgrades: {fileID: 0}
+  _fullTank: 0.1
   _renderer: {fileID: 0}
 --- !u!114 &8073906368581474773
 MonoBehaviour:
@@ -341,7 +342,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6ddf0f66eb3ec244eb5b6bd7d1630dba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c5f1a285fa6d9934b8654efe6be1bf05, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -645,7 +646,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 08a88bce94c08d34d9bf7dcf1c3ac583, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 1
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -682,6 +683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotateSpeed: 120
   _upgrades: {fileID: 0}
+  _gameScreen: {fileID: 0}
   _moveSpeed: 4
 --- !u!65 &68321695793438045
 BoxCollider:

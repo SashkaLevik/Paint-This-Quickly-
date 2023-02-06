@@ -13,13 +13,15 @@ public class Hunger : MonoBehaviour
 
     private Tween _tweenSlider;
 
+    public float HungerSpeed => _hungerSpeed;
+
     public event UnityAction Starved;
 
     private void Start()
     {
         ChangeHunger();
-    }
-    
+    }    
+
     private void OnEnable()
     {
         _spawner.LevelCompleted += ResetSlider;
@@ -41,5 +43,5 @@ public class Hunger : MonoBehaviour
         _tweenSlider.Rewind();
         ChangeHunger();
         _slider.value = _slider.minValue;
-    }    
+    }   
 }

@@ -18,7 +18,8 @@ public class Upgrades : MonoBehaviour
     private int _speedLevel;
     private int _tankLevel;
     private int _speedUpgradeCost = 10;
-    private int _tankUpgradeCost = 10;
+    private int _tankUpgradeCost = 1;
+    private int _rewardForAd = 10;
 
     public int Money => _money;
     public int SpeedLevel => _speedLevel;
@@ -44,7 +45,23 @@ public class Upgrades : MonoBehaviour
         _tankLevelUp.onClick.RemoveListener(OnTankLevelUp);
         _speedLevelUp.onClick.RemoveListener(OnSpeedLevelUp);
     }    
-   
+
+    public void AddMoney(int money)
+    {
+        _money += money;
+        _moneyCount.text = _money.ToString();
+    }
+
+    public void OpenPanel(GameObject panel)
+    {
+        panel.SetActive(true);
+    }
+
+    public void ClosePanel(GameObject panel)
+    {
+        panel.SetActive(false);
+    }
+
     public void InitMoney(int money)
     {
         _money = money;
@@ -61,6 +78,12 @@ public class Upgrades : MonoBehaviour
     {
         _tankLevel = tankLevel;
         _tankLevelText.text = _tankLevel.ToString();
+    }
+
+    public void RewardPlayer()
+    {
+        _money += _rewardForAd;
+        _moneyCount.text = _money.ToString();
     }
 
     private bool TryUpgrade(int price)
@@ -92,21 +115,5 @@ public class Upgrades : MonoBehaviour
             _tankLevelText.text = _tankLevel.ToString();
             TankLevelUp?.Invoke();
         }
-    }
-
-    public void AddMoney(int money)
-    {
-        _money += money;
-        _moneyCount.text = _money.ToString();
-    }
-
-    public void OpenPanel(GameObject panel)
-    {
-        panel.SetActive(true);
-    }
-
-    public void ClosePanel(GameObject panel)
-    {
-        panel.SetActive(false);
-    }
+    }    
 }
