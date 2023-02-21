@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class HungryHead : MonoBehaviour
 {
+    [SerializeField] private AudioSource _champ;
+
     private Animator _animator;
 
     public const string Eat = "Eat";
@@ -17,5 +19,6 @@ public class HungryHead : MonoBehaviour
     public void BeginEat()
     {
         _animator.SetTrigger(Eat);
-    }
+        _champ.Play();
+    }    
 }

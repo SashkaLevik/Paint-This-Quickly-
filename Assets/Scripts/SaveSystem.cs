@@ -14,7 +14,7 @@ public class SaveSystem : MonoBehaviour
     private const string TankLevelKey = "TankLevel";
     private const string MoneyKey = "Money";
     private const string CurrentLevel = "CurrentLevel";
-    private const string Score = "Score";
+    private const string TotalScore = "TotalScore";
 
     public void Save()
     {
@@ -24,7 +24,7 @@ public class SaveSystem : MonoBehaviour
         PlayerPrefs.SetFloat(SpeedKey, _player.MoveSpeed);
         PlayerPrefs.SetFloat(TankKey, _tank.FullTank);
         PlayerPrefs.SetInt(CurrentLevel, _foodSpawner.CurrentLevel);
-        PlayerPrefs.SetFloat(Score, _score.CurrentScore);
+        PlayerPrefs.SetInt(TotalScore, _score.TotalScore);
     }
 
     public void Load()
@@ -37,7 +37,7 @@ public class SaveSystem : MonoBehaviour
             _player.Init(PlayerPrefs.GetFloat(SpeedKey));
             _tank.Init(PlayerPrefs.GetFloat(TankKey));
             _foodSpawner.Init(PlayerPrefs.GetInt(CurrentLevel));
-            _score.Init(PlayerPrefs.GetFloat(Score));
+            _score.Init(PlayerPrefs.GetInt(TotalScore));
         }
         else
             Debug.Log("Save not found");

@@ -9,19 +9,19 @@ public class YandexSaveScore : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_score.CurrentScore == 0)
+        if (_score.TotalScore == 0)
             return;
 
         Leaderboard.GetPlayerEntry(LeaderboardName, (result) =>
         {
             if (result == null)
             {
-                Leaderboard.SetScore(LeaderboardName, _score.CurrentScore);
+                Leaderboard.SetScore(LeaderboardName, _score.TotalScore);
             }
             else
             {
-                if (result.score < _score.CurrentScore)
-                    Leaderboard.SetScore(LeaderboardName, _score.CurrentScore);
+                if (result.score < _score.TotalScore)
+                    Leaderboard.SetScore(LeaderboardName, _score.TotalScore);
             }
         });
     }

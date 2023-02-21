@@ -12,6 +12,7 @@ public class View : MonoBehaviour
     [SerializeField] private AudioSource _vacuumSound;
     [SerializeField] private AudioSource _fillSound;
     [SerializeField] private AudioSource _paintSound;
+    [SerializeField] private ParticleSystem _paintAffect;
     
     private bool _isFilled = false;
     public float _currentCapacity;
@@ -33,6 +34,8 @@ public class View : MonoBehaviour
             transform.DOScaleY(scale, _changingSpeed);
             _fillSound.Play();
             _currentCapacity = scale;
+            var main = _paintAffect.main;
+            main.startColor = color;
             _isFilled = true;
         }        
     }        
@@ -45,6 +48,8 @@ public class View : MonoBehaviour
             transform.DOScaleY(scale, _changingSpeed);
             _vacuumSound.Play();
             _currentCapacity = scale;
+            var main = _paintAffect.main;
+            main.startColor = color;
             _isFilled = false;
         }
     }

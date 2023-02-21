@@ -96,8 +96,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.024136689, y: 0.030721508, z: 0.0012308068}
-  m_Center: {x: -0.0003895452, y: -0.007540805, z: 0.0004519706}
+  m_Size: {x: 0.031272803, y: 0.034756936, z: 0.01352392}
+  m_Center: {x: -0.00040847945, y: -0.0055231093, z: 0.006598554}
 --- !u!114 &7188872057225054465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,12 +110,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   _tank: {fileID: 0}
   _view: {fileID: 0}
   _foodColor: {r: 1, g: 1, b: 0, a: 1}
   _colorController: {fileID: 0}
   _changingSpeed: 3
-  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1262507620834434778
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,8 +212,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1134601, y: 0.12460291, z: 0.014930606}
-  m_Center: {x: -0.00043005036, y: -0.025902107, z: 0.009057586}
+  m_Size: {x: 0.16519928, y: 0.16016673, z: 0.11141926}
+  m_Center: {x: -0.002877046, y: -0.029408438, z: 0.05730188}
 --- !u!114 &7914703571102606958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,12 +226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   _tank: {fileID: 0}
   _view: {fileID: 0}
   _foodColor: {r: 1, g: 0, b: 0, a: 1}
   _colorController: {fileID: 0}
   _changingSpeed: 3
-  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2402941399259977737
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,8 +500,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.025880387, y: 0.025974525, z: 0.0027242638}
-  m_Center: {x: 0.0032477735, y: -0.0023173024, z: 0.0013621311}
+  m_Size: {x: 0.037180997, y: 0.034702353, z: 0.018322928}
+  m_Center: {x: 0.005264818, y: -0.0026419985, z: 0.009161447}
 --- !u!114 &8934776069653859238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,12 +514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   _tank: {fileID: 0}
   _view: {fileID: 0}
   _foodColor: {r: 1, g: 1, b: 0, a: 1}
   _colorController: {fileID: 0}
   _changingSpeed: 3
-  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &6197068906880627709
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,5 +583,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  Check: 0
-  Reward: 1
+  _hungryHead: {fileID: 0}

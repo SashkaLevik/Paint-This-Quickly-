@@ -10,17 +10,19 @@ public class Tube : MonoBehaviour
     [SerializeField] protected Tank _tank;
     [SerializeField] protected View _view;
     [SerializeField] protected Color _tubeColor;
-    [SerializeField] protected float _colorChangingSpeed;
+    [SerializeField] private float _colorChangingSpeed;
+    [SerializeField] protected GameObject _bubbles;
 
     public event UnityAction Approached;
 
     private Rigidbody _rigidbody;
 
-    public Color Color => _tubeColor;
+    public Color TubeColor => _tubeColor;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _bubbles.SetActive(false);
     }
 
     public void OnTriggerEnter(Collider collider)
@@ -44,6 +46,22 @@ public class Tube : MonoBehaviour
 
     public virtual void OnTankApproached()
     {
+        LoadPaint();
         _view.FillTank(_tubeColor, _tank.FullTank);
+    }
+
+    private void LoadPaint()
+    {
+        if (_view.IsFilled == false)
+        {
+            _bubbles.SetActive(true);
+            _bubbles.transform.LookAt(_player.transform.position);
+            Invoke(nameof(StopLoading), 2f);
+        }        
+    }
+    
+    private void StopLoading()
+    {
+        _bubbles.SetActive(false);
     }
 }

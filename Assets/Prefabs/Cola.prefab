@@ -193,12 +193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   _tank: {fileID: 0}
   _view: {fileID: 0}
-  _foodColor: {r: 0.5019608, g: 0, b: 0.5019608, a: 1}
+  _foodColor: {r: 0, g: 0.5019608, b: 0, a: 1}
   _colorController: {fileID: 0}
   _changingSpeed: 3
-  DefaultColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &471756006661696797
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '      3
 
-    7'
+    4'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -436,8 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  Check: 0
-  Reward: 1
+  _hungryHead: {fileID: 0}
 --- !u!1 &8768789086761144279
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,9 +547,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97acfe372f0ad614b9bcda05ccbf1e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   _tank: {fileID: 0}
   _view: {fileID: 0}
   _foodColor: {r: 1, g: 1, b: 0, a: 1}
   _colorController: {fileID: 0}
   _changingSpeed: 3
-  DefaultColor: {r: 0, g: 0, b: 0, a: 0}

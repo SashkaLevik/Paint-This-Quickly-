@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-
+using TMPro;
 public class LevelScreen : MonoBehaviour
 {
     [SerializeField] private Button _backToMenu;
@@ -26,6 +26,8 @@ public class LevelScreen : MonoBehaviour
     [SerializeField] private GameObject[] _foursTamplate;
     [SerializeField] private GameObject[] _fifthTamplate;
     [SerializeField] private AudioSource _tapSound;
+    [SerializeField] private Score _score;
+    [SerializeField] private TMP_Text _scoreText;
 
     public event UnityAction ReturnToMenu;
 
@@ -105,6 +107,7 @@ public class LevelScreen : MonoBehaviour
 
     private void OnLevelButton(GameObject[] tamplate)
     {
+        _scoreText.text = _score.TotalScore.ToString();
         _levelPanel.SetActive(false);
         _tapSound.Play();
         _foodSpawner.SpawnFood(tamplate);

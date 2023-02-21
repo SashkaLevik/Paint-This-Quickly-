@@ -6,9 +6,11 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _rotateSpeed;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private Tank _tank;
     [SerializeField] private Upgrades _upgrades;
     [SerializeField] private GameScreen _gameScreen;
-    [SerializeField] private float _moveSpeed;
+    [SerializeField] private GameObject _paintEffect;
     
     private float _levelUpValue = 0.5f;
 
@@ -16,24 +18,16 @@ public class Player : MonoBehaviour
     private Rigidbody _rigidbody;
 
     public const string IsRun = "IsRun";
-    public const string Load = "Load";
+    public const string Paint = "Paint";
 
     public float MoveSpeed => _moveSpeed;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _rigidbody = GetComponent<Rigidbody>();        
-    }
-
-    private void Update()
-    {
-        if (Input.GetKey("c"))
-        {
-            _animator.SetBool(IsRun, false);
-            _animator.SetTrigger(Load);
-        }
-    }
+        _rigidbody = GetComponent<Rigidbody>();
+        _paintEffect.SetActive(false);
+    }    
 
     private void FixedUpdate()
     {
@@ -53,13 +47,19 @@ public class Player : MonoBehaviour
     public void Init(float speed)
     {
         _moveSpeed = speed;
+    }    
+
+    public void PaintFood()
+    {
+        _animator.SetTrigger(Paint);
+        _paintEffect.SetActive(true);
+        Invoke(nameof(StopPainting), 1f);
     }
 
-    public void LoadPaint()
+    private void StopPainting()
     {
-        _animator.SetBool(IsRun, false);
-        _animator.SetTrigger(Load);
-    }
+        _paintEffect.SetActive(false);
+    }    
 
     public void SetPosition()
     {
