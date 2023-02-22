@@ -18,7 +18,7 @@ public class Upgrades : MonoBehaviour
     private int _speedLevel;
     private int _tankLevel;
     private int _speedUpgradeCost = 30;
-    private int _tankUpgradeCost = 1;
+    private int _tankUpgradeCost = 60;
     private int _rewardForAd = 10;
 
     public int Money => _money;
