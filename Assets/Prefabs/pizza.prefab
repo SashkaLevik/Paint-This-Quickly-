@@ -113,7 +113,7 @@ MonoBehaviour:
   _player: {fileID: 0}
   _tank: {fileID: 0}
   _view: {fileID: 0}
-  _foodColor: {r: 1, g: 1, b: 0, a: 1}
+  _foodColor: {r: 1, g: 0.49803922, b: 0, a: 1}
   _colorController: {fileID: 0}
   _changingSpeed: 3
 --- !u!1 &1262507620834434778
@@ -332,7 +332,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1\n     3"
+  m_text: '1
+
+    2   3'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

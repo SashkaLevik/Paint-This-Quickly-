@@ -11,7 +11,7 @@ public class Food : MonoBehaviour
 
     private float _flySpeed = 3f;
     private bool _isCooked;
-    private int _reward = 10;
+    private int _reward = 5;
 
     private FoodPiece[] _foodPieces;
     public int Reward => _reward;

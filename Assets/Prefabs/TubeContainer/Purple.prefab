@@ -347,6 +347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7587428911157994945}
+  - component: {fileID: 6070138866407612476}
   m_Layer: 0
   m_Name: Purple
   m_TagString: Untagged
@@ -373,6 +374,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 153.901, z: 0}
+--- !u!65 &6070138866407612476
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7061686862773600123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.2673407, y: 0.7428341, z: 2.4027007}
+  m_Center: {x: -1.6336715, y: 0.5845251, z: -0.026658408}
 --- !u!1 &7354558660849165890
 GameObject:
   m_ObjectHideFlags: 0

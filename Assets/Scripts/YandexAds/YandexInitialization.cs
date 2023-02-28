@@ -4,6 +4,7 @@ using System.Collections;
 using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class YandexInitialization : MonoBehaviour
 {
@@ -17,14 +18,15 @@ public class YandexInitialization : MonoBehaviour
 #if !UNITY_WEBGL || UNITY_EDITOR
         yield break;
 #endif
+
         yield return YandexGamesSdk.Initialize(() => PlayerAccount.RequestPersonalProfileDataPermission());
 
         Completed?.Invoke();
 
-        Leaderboard.GetPlayerEntry(LeaderboardName, (result) =>
-        {
-            if (result != null)
-                PlayerAuthorized?.Invoke();
-        });
-    }
+        //Leaderboard.GetPlayerEntry(LeaderboardName, (result) =>
+        //{
+        //    if (result != null)
+        //        PlayerAuthorized?.Invoke();
+        //});
+    }    
 }

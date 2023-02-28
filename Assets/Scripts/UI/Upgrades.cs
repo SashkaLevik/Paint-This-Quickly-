@@ -14,12 +14,13 @@ public class Upgrades : MonoBehaviour
     [SerializeField] private TMP_Text _tankLevelText;
     [SerializeField] private GameObject _panel;
     [SerializeField] private int _money;
+    [SerializeField] private YandexAds _yandexAds;
 
     private int _speedLevel;
     private int _tankLevel;
     private int _speedUpgradeCost = 30;
     private int _tankUpgradeCost = 60;
-    private int _rewardForAd = 10;
+    private int _rewardForAd = 5;
 
     public int Money => _money;
     public int SpeedLevel => _speedLevel;
@@ -38,13 +39,15 @@ public class Upgrades : MonoBehaviour
     {
         _tankLevelUp.onClick.AddListener(OnTankLevelUp);
         _speedLevelUp.onClick.AddListener(OnSpeedLevelUp);
+        _yandexAds.RewardedAddShowed += RewardPlayer;
     }
 
     private void OnDisable()
     {
         _tankLevelUp.onClick.RemoveListener(OnTankLevelUp);
         _speedLevelUp.onClick.RemoveListener(OnSpeedLevelUp);
-    }    
+        _yandexAds.RewardedAddShowed -= RewardPlayer;
+    }
 
     public void AddMoney(int money)
     {
@@ -102,9 +105,15 @@ public class Upgrades : MonoBehaviour
         if (TryUpgrade(_speedUpgradeCost))
         {
             _speedLevel+=1;
-            _speedLevelText.text = _speedLevel.ToString();
             SpeedLevelUp?.Invoke();
-        }
+            _speedLevelText.text = _speedLevel.ToString();
+
+            if (_speedLevel == 5)
+            {
+                _speedLevelText.text = "Max";
+                _speedLevelUp.gameObject.SetActive(false);
+            }
+        }        
     }
 
     private void OnTankLevelUp()
@@ -112,8 +121,14 @@ public class Upgrades : MonoBehaviour
         if (TryUpgrade(_tankUpgradeCost))
         {
             _tankLevel++;
-            _tankLevelText.text = _tankLevel.ToString();
             TankLevelUp?.Invoke();
-        }
+            _tankLevelText.text = _tankLevel.ToString();
+
+            if (_tankLevel ==4)
+            {
+                _tankLevelText.text = "Max";
+                _tankLevelUp.gameObject.SetActive(false);
+            }
+        }        
     }    
 }

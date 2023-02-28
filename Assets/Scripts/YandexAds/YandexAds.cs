@@ -1,4 +1,6 @@
-using System.Collections;
+#pragma warning disable
+
+using System;
 using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,9 +12,21 @@ public class YandexAds : MonoBehaviour
     [SerializeField] private Button _rewardButton;
     [SerializeField] private Upgrades _upgrades;
     [SerializeField] private LevelScreen _levelScreen;
+    [SerializeField] private YandexInitialization _yandexInitialization;
+
+    public bool IsShows { get; private set; }
+
+    public event UnityAction Shows;
+    public event UnityAction RewardedAddShowed;
+
+    private void Start()
+    {
+        _rewardButton.gameObject.SetActive(false);
+    }
 
     private void OnEnable()
     {
+        _yandexInitialization.Completed += ApearRewardButton;
         _foodSpawner.LevelCompleted += ShowInterstitial;
         _levelScreen.NextLevelStarted += ApearRewardButton;
         _rewardButton.onClick.AddListener(ShowRewardAd);
@@ -20,6 +34,7 @@ public class YandexAds : MonoBehaviour
 
     private void OnDisable()
     {
+        _yandexInitialization.Completed -= ApearRewardButton;
         _foodSpawner.LevelCompleted -= ShowInterstitial;
         _levelScreen.NextLevelStarted -= ApearRewardButton;
         _rewardButton.onClick.RemoveListener(ShowRewardAd);
@@ -32,18 +47,19 @@ public class YandexAds : MonoBehaviour
 
     private void ShowInterstitial()
     {
-        //InterstitialAd.Show();
+        InterstitialAd.Show();
     }
 
     private void ShowRewardAd()
     {
-        //VideoAd.Show(OnAdOpen, OnAdClose);
-        _upgrades.RewardPlayer();
+        VideoAd.Show(OnAdOpen, OnAdClose);
+        RewardedAddShowed?.Invoke();
         _rewardButton.gameObject.SetActive(false);
     }
     
     private void OnAdOpen()
     {
+        IsShows = true;
         Time.timeScale = 0;
         AudioListener.volume = 0;
     }

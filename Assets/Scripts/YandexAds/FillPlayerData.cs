@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class FillPlayerData : MonoBehaviour
 {
+
     //[SerializeField] private TMP_Text _rank;
     //[SerializeField] private TMP_Text _name;
     //[SerializeField] private TMP_Text _score;
