@@ -14,8 +14,10 @@ public class MenuScreen : MonoBehaviour
     [SerializeField] private AudioSource _tapSound;
     [SerializeField] private AudioSource _returnSound;
     [SerializeField] private SaveSystem _saveSystem;
+    [SerializeField] private Button LB;
 
     public event UnityAction GameStarted;
+    public event UnityAction LeaderboardOpened;
 
     private void Start()
     {
@@ -24,6 +26,7 @@ public class MenuScreen : MonoBehaviour
 
     private void OnEnable()
     {
+        LB.onClick.AddListener(OpenLeaderboard);
         _newGameButton.onClick.AddListener(PlayGame);
         _continueButton.onClick.AddListener(Continue);
         _exitButton.onClick.AddListener(ExitGame);
@@ -33,11 +36,17 @@ public class MenuScreen : MonoBehaviour
 
     private void OnDisable()
     {
+        LB.onClick.RemoveListener(OpenLeaderboard);
         _newGameButton.onClick.RemoveListener(PlayGame);
         _continueButton.onClick.RemoveListener(Continue);
         _exitButton.onClick.RemoveListener(ExitGame);
         _levelScreen.ReturnToMenu -= OpenMenu;
         _gameOver.Died -= OpenMenu;
+    }
+
+    private void OpenLeaderboard()
+    {
+        LeaderboardOpened?.Invoke();
     }
 
     private void PlayGame()

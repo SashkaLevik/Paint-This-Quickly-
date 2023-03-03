@@ -23,10 +23,10 @@ public class YandexInitialization : MonoBehaviour
 
         Completed?.Invoke();
 
-        //Leaderboard.GetPlayerEntry(LeaderboardName, (result) =>
-        //{
-        //    if (result != null)
-        //        PlayerAuthorized?.Invoke();
-        //});
+        Leaderboard.GetPlayerEntry(LeaderboardName, (result) =>
+        {
+            if (result != null)
+                PlayerAuthorized?.Invoke();
+        });
     }    
 }
