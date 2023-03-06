@@ -30,27 +30,22 @@ public class LevelScreen : MonoBehaviour
     [SerializeField] private TMP_Text _scoreText;
 
     public event UnityAction ReturnToMenu;
-
     public event UnityAction NextLevelStarted;
 
     private void Start()
     {
-        _levelPanel.SetActive(false);
-        _buttons.AddRange(new List<Button> { _secondLevel, _thirdLevel, _foursLevel, _fifthLevel });
+        _buttons.AddRange(new List<Button> {_firstLevel, _secondLevel, _thirdLevel, _foursLevel, _fifthLevel });
         _pathimages.AddRange(new List<Image> { _firstPath, _secondPath, _thirdPath, _foursPath });
-        _secondLevel.interactable = false;
-        _thirdLevel.interactable = false;
-        _foursLevel.interactable = false;
-        _fifthLevel.interactable = false;
-        _firstPath.gameObject.SetActive(false);
-        _secondPath.gameObject.SetActive(false);
-        _thirdPath.gameObject.SetActive(false);
-        _foursPath.gameObject.SetActive(false);
+        ResetButtons();
+        OpenCompleteLevels();
+        _levelPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     private void OnEnable()
     {
-        _menuScreen.GameStarted += ChooseLevel;
+        _menuScreen.NewGameStarted += StartNewGame;
+        _menuScreen.Continued += ChooseLevel;
         _foodSpawner.LevelCompleted += NextLevel;
         _backToMenu.onClick.AddListener(Return);
         _firstLevel.onClick.AddListener(() => OnLevelButton(_firstTamplate));
@@ -62,7 +57,8 @@ public class LevelScreen : MonoBehaviour
 
     private void OnDisable()
     {
-        _menuScreen.GameStarted -= ChooseLevel;
+        _menuScreen.NewGameStarted -= StartNewGame;
+        _menuScreen.Continued -= ChooseLevel;
         _foodSpawner.LevelCompleted -= NextLevel;
         _backToMenu.onClick.RemoveListener(Return);
         _firstLevel.onClick.RemoveListener(() => OnLevelButton(_firstTamplate));
@@ -72,11 +68,33 @@ public class LevelScreen : MonoBehaviour
         _fifthLevel.onClick.RemoveListener(() => OnLevelButton(_fifthTamplate));
     }
 
+    private void StartNewGame()
+    {
+        ResetButtons();
+        ChooseLevel();
+    }
+
     private void ChooseLevel()
     {
         _levelPanel.SetActive(true);
         Time.timeScale = 0;
+    }    
 
+    private void ResetButtons()
+    {
+        _firstLevel.interactable = true;
+        _secondLevel.interactable = false;
+        _thirdLevel.interactable = false;
+        _foursLevel.interactable = false;
+        _fifthLevel.interactable = false;
+        _firstPath.gameObject.SetActive(false);
+        _secondPath.gameObject.SetActive(false);
+        _thirdPath.gameObject.SetActive(false);
+        _foursPath.gameObject.SetActive(false);
+    }
+
+    private void OpenCompleteLevels()
+    {        
         for (int i = 0; i < _foodSpawner.CurrentLevel; i++)
         {
             foreach (var button in _buttons)
@@ -126,9 +144,8 @@ public class LevelScreen : MonoBehaviour
             {
                 button.interactable = true;
                 break;
-            }
+            }            
         }
-
         foreach (var image in _pathimages)
         {
             if (image.gameObject.activeSelf == false)

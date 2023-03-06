@@ -65,11 +65,6 @@ public class Food : MonoBehaviour
         CookedFood?.Invoke(this);
         yield return new WaitForSeconds(1);
         _hungryHead.BeginEat();
-        Devour();
-    }
-
-    private void Devour()
-    {
-        Destroy(gameObject);
+        Destroy(gameObject, 1f);
     }
 }

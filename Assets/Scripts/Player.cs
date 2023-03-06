@@ -11,8 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Upgrades _upgrades;
     [SerializeField] private GameScreen _gameScreen;
     [SerializeField] private GameObject _paintEffect;
+    [SerializeField] private FixedJoystick _joystick;
     
-    private float _levelUpValue = 0.5f;
+    private float _levelUpValue = 0.5f;    
 
     private Animator _animator;
     private Rigidbody _rigidbody;
@@ -32,7 +33,8 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         MoveLogic();
-    }    
+        JoystickMove();
+    }
 
     private void OnEnable()
     {
@@ -55,17 +57,16 @@ public class Player : MonoBehaviour
         _paintEffect.SetActive(true);
         Invoke(nameof(StopPainting), 1f);
     }
-
-    private void StopPainting()
-    {
-        _paintEffect.SetActive(false);
-    }    
-
     public void SetPosition()
     {
         transform.position = new Vector3(0, 0, 0);
     }
 
+    private void StopPainting()
+    {
+        _paintEffect.SetActive(false);
+    }    
+   
     private void MoveLogic()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
@@ -82,6 +83,17 @@ public class Player : MonoBehaviour
         }
         else
             _animator.SetBool(IsRun, false);
+    }
+
+    private void JoystickMove()
+    {
+        _rigidbody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _joystick.Vertical * _moveSpeed);
+        
+        if (_joystick.Horizontal != 0 || _joystick.Vertical !=0)
+        {
+            _animator.SetBool(IsRun, true);
+            transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
+        }
     }
 
     private void OnLevelUp()

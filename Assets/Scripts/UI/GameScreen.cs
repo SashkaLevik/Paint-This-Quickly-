@@ -6,12 +6,15 @@ public class GameScreen : MonoBehaviour
 {
     [SerializeField] private Button _pause;
     [SerializeField] private Button _sound;
+    [SerializeField] private Button _toMenu;
     [SerializeField] private Image _gameStart;
     [SerializeField] private Image _gamePause;
     [SerializeField] private Image _soundOn;
     [SerializeField] private Image _soundOff;
     [SerializeField] private Player _player;    
     [SerializeField] private SaveSystem _saveSystem;
+
+    public event UnityAction Returned;
 
     private void Start()
     {
@@ -21,12 +24,14 @@ public class GameScreen : MonoBehaviour
 
     private void OnEnable()
     {
+        _toMenu.onClick.AddListener(ReturnToMenu);
         _pause.onClick.AddListener(OnPauseButton);
         _sound.onClick.AddListener(OnSoundButton);        
     }
 
     private void OnDisable()
     {
+        _toMenu.onClick.RemoveListener(ReturnToMenu);
         _pause.onClick.RemoveListener(OnPauseButton);
         _sound.onClick.RemoveListener(OnSoundButton);
     }
@@ -62,4 +67,9 @@ public class GameScreen : MonoBehaviour
             AudioListener.volume = 1;
         }
     }     
+
+    private void ReturnToMenu()
+    {
+        Returned?.Invoke();
+    }
 }

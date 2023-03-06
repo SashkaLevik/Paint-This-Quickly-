@@ -20,7 +20,7 @@ public class FoodSpawner : MonoBehaviour
     [SerializeField] private TMP_Text _scoreText;
 
     private GameObject[] _tamplate;
-    private int _currentLevel;
+    public int _currentLevel;
 
     private FoodPiece[] _foodPieces;
     public int CurrentLevel => _currentLevel;
@@ -36,7 +36,6 @@ public class FoodSpawner : MonoBehaviour
             food.Init(_player, _hungryHead);
             _foods.Add(food);
             food.CookedFood += OnFoodCooked;
-            //_spawnPoints.RemoveAt(randomPos);
             _foodPieces = food.GetComponentsInChildren<FoodPiece>();            
 
             foreach (var foodPiece in _foodPieces)

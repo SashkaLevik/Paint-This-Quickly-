@@ -76,44 +76,7 @@ public class LeaderboardView : MonoBehaviour
             Destroy(entry.gameObject);
 
         _playerDatas = new List<PlayerData>();
-    }
-
-    //[SerializeField] private YandexLBLoader _yandexLBLoader;
-    //[SerializeField] private Button _returnToMenu;
-    //[SerializeField] private MenuScreen _menuScreen;
-    //[SerializeField] private GameObject LBPanel;
-
-    //private FillPlayerData[] _fillPlayerDatas;
-    //private LeaderboardPlayers[] _players;    
-
-    //private void OnEnable()
-    //{
-    //    _menuScreen.LBOpened += Show;
-    //    _returnToMenu.onClick.AddListener(Return);
-    //    //enabled = false;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    _menuScreen.LBOpened -= Show;
-    //    _returnToMenu.onClick.RemoveListener(Return);
-    //}
-
-    //private void Show()
-    //{
-    //    LBPanel.SetActive(true);
-    //    _fillPlayerDatas = GetComponentsInChildren<FillPlayerData>();
-
-    //    _players = _yandexLBLoader.Players;
-
-    //    for (int i = 0; i < _players.Length; i++)
-    //    {
-    //        if (_fillPlayerDatas[i] != null)
-    //        {
-    //            _fillPlayerDatas[i].SetData(_players[i]);
-    //        }
-    //    }
-    //}
+    }    
 
     private void Return()
     {
