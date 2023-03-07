@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
     [SerializeField] private GameScreen _gameScreen;
     [SerializeField] private GameObject _paintEffect;
     [SerializeField] private FixedJoystick _joystick;
+    [SerializeField] private MenuScreen _menuScreen;
     
     private float _levelUpValue = 0.5f;    
 
     private Animator _animator;
     private Rigidbody _rigidbody;
+    private CharacterController _controller;
 
     public const string IsRun = "IsRun";
     public const string Paint = "Paint";
@@ -25,25 +27,29 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        _controller = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
         _paintEffect.SetActive(false);
-    }    
+    }
 
+    
     private void FixedUpdate()
     {
-        MoveLogic();
-        JoystickMove();
+        MoveByKeyboard();
+        MoveByJoystick();
     }
 
     private void OnEnable()
     {
         _upgrades.SpeedLevelUp += OnLevelUp;
+        _menuScreen.NewGameStarted += SetDefaultValues;
     }
 
     private void OnDisable()
     {
         _upgrades.SpeedLevelUp -= OnLevelUp;
+        _menuScreen.NewGameStarted -= SetDefaultValues;
     }
 
     public void Init(float speed)
@@ -62,37 +68,44 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
     }
 
+    private void SetDefaultValues()
+    {
+        _moveSpeed = 4;
+    }
+
     private void StopPainting()
     {
         _paintEffect.SetActive(false);
     }    
    
-    private void MoveLogic()
+    private void MoveByKeyboard()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveVertical = Input.GetAxis("Vertical");      
 
-        Vector3 moveDirection = new Vector3(0.0f, 0.0f, moveVertical);
-        Vector3 rotate = new Vector3(0.0f, moveHorizontal, 0.0f);
+        Vector3 moveDirection = new Vector3(moveHorizontal, 0, moveVertical);
+        Vector3 rotation = Vector3.RotateTowards(transform.forward, moveDirection, _rotateSpeed * Time.fixedDeltaTime, 0);
 
         if (moveVertical != 0 || moveHorizontal != 0)
         {
-            _animator.SetBool(IsRun, true);
-            transform.Translate(moveDirection * _moveSpeed * Time.fixedDeltaTime);
-            transform.Rotate(rotate * _rotateSpeed * Time.fixedDeltaTime);
+            _animator.SetBool(IsRun, true);            
+            transform.rotation = Quaternion.LookRotation(rotation);
+            _controller.Move(moveDirection * _moveSpeed * Time.fixedDeltaTime);
         }
         else
             _animator.SetBool(IsRun, false);
     }
 
-    private void JoystickMove()
+    private void MoveByJoystick()
     {
-        _rigidbody.velocity = new Vector3(_joystick.Horizontal * _moveSpeed, _rigidbody.velocity.y, _joystick.Vertical * _moveSpeed);
-        
+        Vector3 moveDirection = new Vector3(_joystick.Horizontal, 0, _joystick.Vertical);
+        Vector3 rotation = Vector3.RotateTowards(transform.forward, moveDirection, _rotateSpeed * Time.fixedDeltaTime, 0);
+
         if (_joystick.Horizontal != 0 || _joystick.Vertical !=0)
         {
             _animator.SetBool(IsRun, true);
-            transform.rotation = Quaternion.LookRotation(_rigidbody.velocity);
+            transform.rotation = Quaternion.LookRotation(rotation);
+            _controller.Move(moveDirection * _moveSpeed * Time.fixedDeltaTime);            
         }
     }
 

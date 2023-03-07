@@ -5,6 +5,7 @@ public class Tank : MonoBehaviour
     [SerializeField] private Color _currentColor;
     [SerializeField] private Color _defaultColor;
     [SerializeField] private Upgrades _upgrades;
+    [SerializeField] private MenuScreen _menuScreen;
 
     public float _fullTank = 0.1f;
     private float _emtyTank = 0.1f;
@@ -23,11 +24,13 @@ public class Tank : MonoBehaviour
     private void OnEnable()
     {
         _upgrades.TankLevelUp += OnLevelUp;
+        _menuScreen.NewGameStarted += SetDefaultValues;
     }
 
     private void OnDisable()
     {
         _upgrades.TankLevelUp -= OnLevelUp;
+        _menuScreen.NewGameStarted -= SetDefaultValues;
     }
 
     private void Start()
@@ -48,5 +51,10 @@ public class Tank : MonoBehaviour
     private void OnLevelUp()
     {
         _fullTank += _levelUpValue;
+    }
+
+    private void SetDefaultValues()
+    {
+        _fullTank = 0.1f;
     }
 }

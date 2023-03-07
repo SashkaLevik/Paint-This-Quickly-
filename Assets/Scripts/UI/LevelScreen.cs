@@ -28,6 +28,7 @@ public class LevelScreen : MonoBehaviour
     [SerializeField] private AudioSource _tapSound;
     [SerializeField] private Score _score;
     [SerializeField] private TMP_Text _scoreText;
+    [SerializeField] private Player _player;
 
     public event UnityAction ReturnToMenu;
     public event UnityAction NextLevelStarted;
@@ -125,6 +126,7 @@ public class LevelScreen : MonoBehaviour
 
     private void OnLevelButton(GameObject[] tamplate)
     {
+        _player.SetPosition();
         _scoreText.text = _score.TotalScore.ToString();
         _levelPanel.SetActive(false);
         _tapSound.Play();

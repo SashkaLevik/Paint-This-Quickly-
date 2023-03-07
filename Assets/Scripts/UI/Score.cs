@@ -9,6 +9,7 @@ public class Score : MonoBehaviour
     [SerializeField] private int _currentScore;
     [SerializeField] private Hunger _hunger;
     [SerializeField] private int _totalScore;
+    [SerializeField] private MenuScreen _menuScreen;
 
     public int TotalScore => _totalScore;
     public int CurrentScore => _currentScore;
@@ -27,17 +28,24 @@ public class Score : MonoBehaviour
     {
         _foodSpawner.LevelCompleted += RoundScore;
         _foodSpawner.LevelCompleted += SetScoreTimer;
+        _menuScreen.NewGameStarted += SetDefaultValues;
     }
 
     private void OnDisable()
     {
         _foodSpawner.LevelCompleted -= RoundScore;
         _foodSpawner.LevelCompleted -= SetScoreTimer;
+        _menuScreen.NewGameStarted -= SetDefaultValues;
     }
 
     public void Init(int score)
     {
         _totalScore = score;
+    }
+
+    private void SetDefaultValues()
+    {
+        _totalScore = 0;
     }
 
     private void RoundScore()

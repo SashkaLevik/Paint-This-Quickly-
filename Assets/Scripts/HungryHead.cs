@@ -18,7 +18,7 @@ public class HungryHead : MonoBehaviour
 
     public void BeginEat()
     {
-        _animator.SetTrigger(Eat);
         _champ.Play();
+        _animator.SetTrigger(Eat);
     }    
 }

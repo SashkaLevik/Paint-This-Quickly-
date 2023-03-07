@@ -18,6 +18,7 @@ public class FoodSpawner : MonoBehaviour
     [SerializeField] private SaveSystem _saveSystem;
     [SerializeField] private Score _score;
     [SerializeField] private TMP_Text _scoreText;
+    [SerializeField] private MenuScreen _menuScreen;
 
     private GameObject[] _tamplate;
     public int _currentLevel;
@@ -26,6 +27,16 @@ public class FoodSpawner : MonoBehaviour
     public int CurrentLevel => _currentLevel;
 
     public event UnityAction LevelCompleted;
+
+    private void OnEnable()
+    {
+        _menuScreen.NewGameStarted += SetDefaultValues;
+    }
+
+    private void OnDisable()
+    {
+        _menuScreen.NewGameStarted -= SetDefaultValues;
+    }
 
     public void SpawnFood(GameObject[] tamplate)
     {
@@ -48,6 +59,11 @@ public class FoodSpawner : MonoBehaviour
     public void Init(int currentLevel)
     {
         _currentLevel = currentLevel;
+    }
+
+    private void SetDefaultValues()
+    {
+        _currentLevel = 0;
     }
 
     private void OnFoodCooked(Food food)

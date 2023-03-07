@@ -15,6 +15,7 @@ public class Upgrades : MonoBehaviour
     [SerializeField] private GameObject _panel;
     [SerializeField] private int _money;
     [SerializeField] private YandexAds _yandexAds;
+    [SerializeField] private MenuScreen _menuScreen;
 
     private int _speedLevel;
     private int _tankLevel;
@@ -40,6 +41,7 @@ public class Upgrades : MonoBehaviour
         _tankLevelUp.onClick.AddListener(OnTankLevelUp);
         _speedLevelUp.onClick.AddListener(OnSpeedLevelUp);
         _yandexAds.RewardedAddShowed += RewardPlayer;
+        _menuScreen.NewGameStarted += SetDefaultValues;
     }
 
     private void OnDisable()
@@ -47,6 +49,7 @@ public class Upgrades : MonoBehaviour
         _tankLevelUp.onClick.RemoveListener(OnTankLevelUp);
         _speedLevelUp.onClick.RemoveListener(OnSpeedLevelUp);
         _yandexAds.RewardedAddShowed -= RewardPlayer;
+        _menuScreen.NewGameStarted -= SetDefaultValues;
     }
 
     public void AddMoney(int money)
@@ -87,6 +90,16 @@ public class Upgrades : MonoBehaviour
     {
         _money += _rewardForAd;
         _moneyCount.text = _money.ToString();
+    }
+
+    private void SetDefaultValues()
+    {
+        _money = 0;
+        _moneyCount.text = _money.ToString();
+        _speedLevel = 0;
+        _speedLevelText.text = _speedLevel.ToString();
+        _tankLevel = 0;
+        _tankLevelText.text = _tankLevel.ToString();
     }
 
     private bool TryUpgrade(int price)

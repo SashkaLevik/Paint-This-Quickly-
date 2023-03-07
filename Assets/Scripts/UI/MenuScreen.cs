@@ -16,6 +16,7 @@ public class MenuScreen : MonoBehaviour
     [SerializeField] private AudioSource _tapSound;
     [SerializeField] private AudioSource _returnSound;
     [SerializeField] private SaveSystem _saveSystem;
+    [SerializeField] private Player _player;
 
     public event UnityAction Continued;
     public event UnityAction NewGameStarted;
@@ -64,7 +65,6 @@ public class MenuScreen : MonoBehaviour
         _menuPanel.SetActive(false);
         _tapSound.Play();
         PlayerPrefs.DeleteAll();
-        Debug.Log("Deleted");
         NewGameStarted?.Invoke();
     }
 
