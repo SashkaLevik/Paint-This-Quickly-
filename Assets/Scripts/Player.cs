@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Upgrades _upgrades;
     [SerializeField] private GameScreen _gameScreen;
     [SerializeField] private GameObject _paintEffect;
-    [SerializeField] private FixedJoystick _joystick;
+    [SerializeField] private FloatingJoystick _joystick;
     [SerializeField] private MenuScreen _menuScreen;
     
     private float _levelUpValue = 0.5f;    

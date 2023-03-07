@@ -10,6 +10,8 @@ public class YandexInitialization : MonoBehaviour
 {
     private const string LeaderboardName = "Name";
 
+    [SerializeField] private Localization _localization;
+
     public event UnityAction PlayerAuthorized;
     public event UnityAction Completed;
 
@@ -28,5 +30,12 @@ public class YandexInitialization : MonoBehaviour
             if (result != null)
                 PlayerAuthorized?.Invoke();
         });
+
+        OnInitialized();
     }    
+
+    private void OnInitialized()
+    {
+        _localization.SetLanguage(YandexGamesSdk.Environment.i18n.lang);
+    }
 }
