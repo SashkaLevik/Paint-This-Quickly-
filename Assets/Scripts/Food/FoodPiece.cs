@@ -7,6 +7,7 @@ using DG.Tweening;
 public class FoodPiece : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private Pistol _pistol;
     [SerializeField] private Tank _tank;
     [SerializeField] private View _view;
     [SerializeField] private Color _foodColor;
@@ -64,15 +65,17 @@ public class FoodPiece : MonoBehaviour
             _isPainted = true;
             _player.PaintFood();
             _view.ChangeScale();
+            _pistol.SetDefaultColor();
         }        
     }
 
-    public void Init(Tank tank, ColorController colorController, View view, Player player)
+    public void Init(Tank tank, ColorController colorController, View view, Player player, Pistol pistol)
     {
         _tank = tank;
         _view = view;
         _colorController = colorController;
         _player = player;
+        _pistol = pistol;
     }    
 
     private void OnColorChange(bool isApproached)

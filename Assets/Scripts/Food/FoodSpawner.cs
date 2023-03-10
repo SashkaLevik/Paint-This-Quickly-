@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class FoodSpawner : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private Pistol _pistol;
     [SerializeField] private Tank _tank;
     [SerializeField] private View _view;
     [SerializeField] private HungryHead _hungryHead;
@@ -51,7 +52,7 @@ public class FoodSpawner : MonoBehaviour
 
             foreach (var foodPiece in _foodPieces)
             {
-                foodPiece.Init(_tank, _colorController, _view, _player);
+                foodPiece.Init(_tank, _colorController, _view, _player, _pistol);
             }
         }
     }

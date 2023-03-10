@@ -7,6 +7,7 @@ using DG.Tweening;
 public class Tube : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] protected Pistol _pistol;
     [SerializeField] protected Tank _tank;
     [SerializeField] protected View _view;
     [SerializeField] protected Color _tubeColor;
@@ -48,6 +49,7 @@ public class Tube : MonoBehaviour
     {
         LoadPaint();
         _view.FillTank(_tubeColor, _tank.FullTank);
+        _pistol.Fill(_tubeColor);
     }
 
     private void LoadPaint()
