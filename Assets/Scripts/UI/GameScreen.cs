@@ -4,11 +4,8 @@ using UnityEngine.UI;
 
 public class GameScreen : MonoBehaviour
 {
-    [SerializeField] private Button _pause;
     [SerializeField] private Button _sound;
-    [SerializeField] private Button _toMenu;
-    [SerializeField] private Image _gameStart;
-    [SerializeField] private Image _gamePause;
+    [SerializeField] private Button _toMenu;    
     [SerializeField] private Image _soundOn;
     [SerializeField] private Image _soundOff;
     [SerializeField] private Player _player;    
@@ -18,39 +15,20 @@ public class GameScreen : MonoBehaviour
 
     private void Start()
     {
-        _gameStart.gameObject.SetActive(false);
         _soundOff.gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
         _toMenu.onClick.AddListener(ReturnToMenu);
-        _pause.onClick.AddListener(OnPauseButton);
         _sound.onClick.AddListener(OnSoundButton);        
     }
 
     private void OnDisable()
     {
         _toMenu.onClick.RemoveListener(ReturnToMenu);
-        _pause.onClick.RemoveListener(OnPauseButton);
         _sound.onClick.RemoveListener(OnSoundButton);
-    }
-
-    private void OnPauseButton()
-    {
-        if (_gameStart.gameObject.activeSelf == false)
-        {
-            _gameStart.gameObject.SetActive(true);
-            _gamePause.gameObject.SetActive(false);
-            Time.timeScale = 0;
-        }
-        else
-        {
-            _gameStart.gameObject.SetActive(false);
-            _gamePause.gameObject.SetActive(true);
-            Time.timeScale = 1;
-        }
-    }
+    }    
 
     private void OnSoundButton()
     {
