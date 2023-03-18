@@ -10,11 +10,7 @@ public class LevelScreen : MonoBehaviour
     [SerializeField] private Button _secondLevel;
     [SerializeField] private Button _thirdLevel;
     [SerializeField] private Button _foursLevel;
-    [SerializeField] private Button _fifthLevel;
-    [SerializeField] private Image _firstPath;
-    [SerializeField] private Image _secondPath;
-    [SerializeField] private Image _thirdPath;
-    [SerializeField] private Image _foursPath;
+    [SerializeField] private Button _fifthLevel;    
     [SerializeField] private GameObject _levelPanel;
     [SerializeField] private MenuScreen _menuScreen;
     [SerializeField] private FoodSpawner _foodSpawner;
@@ -36,7 +32,6 @@ public class LevelScreen : MonoBehaviour
     private void Start()
     {
         _buttons.AddRange(new List<Button> {_firstLevel, _secondLevel, _thirdLevel, _foursLevel, _fifthLevel });
-        _pathimages.AddRange(new List<Image> { _firstPath, _secondPath, _thirdPath, _foursPath });
         ResetButtons();
         OpenCompleteLevels();
         _levelPanel.SetActive(true);
@@ -87,11 +82,7 @@ public class LevelScreen : MonoBehaviour
         _secondLevel.interactable = false;
         _thirdLevel.interactable = false;
         _foursLevel.interactable = false;
-        _fifthLevel.interactable = false;
-        _firstPath.gameObject.SetActive(false);
-        _secondPath.gameObject.SetActive(false);
-        _thirdPath.gameObject.SetActive(false);
-        _foursPath.gameObject.SetActive(false);
+        _fifthLevel.interactable = false;        
     }
 
     private void OpenCompleteLevels()
@@ -105,16 +96,7 @@ public class LevelScreen : MonoBehaviour
                     button.interactable = true;
                     break;
                 }
-            }
-
-            foreach (var image in _pathimages)
-            {
-                if (image.gameObject.activeSelf == false)
-                {
-                    image.gameObject.SetActive(true);
-                    break;
-                }
-            }
+            }            
         }
     }
 
@@ -147,14 +129,6 @@ public class LevelScreen : MonoBehaviour
                 button.interactable = true;
                 break;
             }            
-        }
-        foreach (var image in _pathimages)
-        {
-            if (image.gameObject.activeSelf == false)
-            {
-                image.gameObject.SetActive(true);
-                break;
-            }
         }
     }
 }

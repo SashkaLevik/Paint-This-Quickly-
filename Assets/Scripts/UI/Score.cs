@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Score : MonoBehaviour
@@ -58,5 +56,5 @@ public class Score : MonoBehaviour
     {
         _score = _hunger.HungerSpeed;
         _currentScore = 0;
-    }
+    }    
 }

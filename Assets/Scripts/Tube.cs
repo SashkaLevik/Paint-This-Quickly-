@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using DG.Tweening;
 
 public class Tube : MonoBehaviour
 {
@@ -31,7 +28,6 @@ public class Tube : MonoBehaviour
         if (collider.TryGetComponent<Tank>(out _tank))
         {
             Approached?.Invoke();
-            //_player.LoadPaint();
         }
     }    
 
