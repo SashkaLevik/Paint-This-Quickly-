@@ -4,7 +4,6 @@ using System.Collections;
 using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class YandexInitialization : MonoBehaviour
 {

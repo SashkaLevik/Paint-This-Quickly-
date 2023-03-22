@@ -17,5 +17,5 @@ public class PlayInBackground : MonoBehaviour
     {
         AudioListener.pause = inBackground;
         AudioListener.volume = inBackground ? 0f : 1f;
-    }
+    }    
 }
