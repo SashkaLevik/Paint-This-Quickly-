@@ -25417,8 +25417,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.055561062, y: 1.770929, z: 9.532402}
-  m_Center: {x: 0.015488692, y: 0.3854645, z: -9.128151}
+  m_Size: {x: 1.9614289, y: 1.770929, z: 9.3048525}
+  m_Center: {x: 0.96842587, y: 0.3854645, z: -9.241981}
 --- !u!1001 &705100208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25674,8 +25674,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.055561062, y: 1.6060967, z: 9.555727}
-  m_Center: {x: 0.015488897, y: 0.30304837, z: -9.139802}
+  m_Size: {x: 2.212746, y: 1.6060967, z: 9.1544285}
+  m_Center: {x: -0.8391446, y: 0.30304837, z: -9.340459}
 --- !u!1001 &714251894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32714,13 +32714,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ff1b917e277a5428c05b7833e2beda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 6755474008789472897}
   _pistol: {fileID: 319060249}
   _tank: {fileID: 6755474008789472899}
   _view: {fileID: 6755474008789472898}
-  _tubeColor: {r: 1, g: 0.87058824, b: 0.6784314, a: 1}
-  _colorChangingSpeed: 3
-  _bubbles: {fileID: 0}
+  _defaultColor: {r: 1, g: 0.87058824, b: 0.6784314, a: 1}
 --- !u!1001 &923323118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45266,11 +45263,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7064184704913731311, guid: 5d59f76b5f734f04492a6d93ad0044f0, type: 3}
       propertyPath: m_Size.x
-      value: 1.8157856
+      value: 0.77085495
       objectReference: {fileID: 0}
     - target: {fileID: 7064184704913731311, guid: 5d59f76b5f734f04492a6d93ad0044f0, type: 3}
       propertyPath: m_Center.x
-      value: -0.36092532
+      value: 0.16154003
       objectReference: {fileID: 0}
     - target: {fileID: 8292621764328906339, guid: 5d59f76b5f734f04492a6d93ad0044f0, type: 3}
       propertyPath: m_Name
@@ -45320,7 +45317,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7064184704913731311, guid: 5d59f76b5f734f04492a6d93ad0044f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5d59f76b5f734f04492a6d93ad0044f0, type: 3}
 --- !u!1001 &1641682730
 PrefabInstance:
@@ -61746,7 +61744,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7064184704913731311, guid: 5d59f76b5f734f04492a6d93ad0044f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5d59f76b5f734f04492a6d93ad0044f0, type: 3}
 --- !u!1001 &4153438404943332976
 PrefabInstance:
@@ -61755,14 +61754,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3342356575051214929, guid: 2ca6cb745fee55f479553c9cff6c3c44, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 872e8bfb93ff9c547aa7962b802fb6c5, type: 2}
-    - target: {fileID: 3766315417388725419, guid: 2ca6cb745fee55f479553c9cff6c3c44, type: 3}
-      propertyPath: m_Convex
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3846799658620932484, guid: 2ca6cb745fee55f479553c9cff6c3c44, type: 3}
       propertyPath: m_Name
       value: Bridge v2
@@ -61772,20 +61763,16 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4479185264211757886, guid: 2ca6cb745fee55f479553c9cff6c3c44, type: 3}
-      propertyPath: m_LocalScale.y
-      value: -16.228687
-      objectReference: {fileID: 0}
-    - target: {fileID: 4479185264211757886, guid: 2ca6cb745fee55f479553c9cff6c3c44, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.963
+      value: 1.862
       objectReference: {fileID: 0}
     - target: {fileID: 4479185264211757886, guid: 2ca6cb745fee55f479553c9cff6c3c44, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.0898
+      value: -1.0894
       objectReference: {fileID: 0}
     - target: {fileID: 4479185264211757886, guid: 2ca6cb745fee55f479553c9cff6c3c44, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.2401
+      value: 21.2403
       objectReference: {fileID: 0}
     - target: {fileID: 4479185264211757886, guid: 2ca6cb745fee55f479553c9cff6c3c44, type: 3}
       propertyPath: m_LocalRotation.w

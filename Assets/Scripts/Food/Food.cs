@@ -11,7 +11,7 @@ public class Food : MonoBehaviour
     private int _reward = 5;
     private bool _isCoocked;   
 
-    public FoodPiece[] _foodPieces;
+    private FoodPiece[] _foodPieces;
 
     public int Reward => _reward;
 

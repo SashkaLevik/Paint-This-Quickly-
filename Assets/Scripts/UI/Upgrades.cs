@@ -22,6 +22,8 @@ public class Upgrades : MonoBehaviour
     private int _speedUpgradeCost = 30;
     private int _tankUpgradeCost = 60;
     private int _rewardForAd = 5;
+    private int _maxSpeedLevel = 5;
+    private int _maxTankLevel = 4;
 
     public int Money => _money;
     public int SpeedLevel => _speedLevel;
@@ -117,11 +119,11 @@ public class Upgrades : MonoBehaviour
     {
         if (TryUpgrade(_speedUpgradeCost))
         {
-            _speedLevel+=1;
+            _speedLevel++;
             SpeedLevelUp?.Invoke();
             _speedLevelText.text = _speedLevel.ToString();
 
-            if (_speedLevel == 5)
+            if (_speedLevel == _maxSpeedLevel)
             {
                 _speedLevelText.text = "Max";
                 _speedLevelUp.gameObject.SetActive(false);
@@ -137,7 +139,7 @@ public class Upgrades : MonoBehaviour
             TankLevelUp?.Invoke();
             _tankLevelText.text = _tankLevel.ToString();
 
-            if (_tankLevel ==4)
+            if (_tankLevel == _maxTankLevel)
             {
                 _tankLevelText.text = "Max";
                 _tankLevelUp.gameObject.SetActive(false);
