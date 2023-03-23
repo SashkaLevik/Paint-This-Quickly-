@@ -25,7 +25,7 @@
 
 # Visual Studio cache directory
 .vs/
-/.vsconfig/
+git rm --cached.vsconfig/
 # Gradle cache directory
 .gradle/
 
