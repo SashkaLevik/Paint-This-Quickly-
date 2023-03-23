@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -33,7 +31,6 @@ public class GameOverScreen : MonoBehaviour
     {
         _gameOverPanel.SetActive(true);
         Time.timeScale = 0;
-        ClearTable();
         Debug.Log("YouDie");
     }
 
@@ -42,15 +39,5 @@ public class GameOverScreen : MonoBehaviour
         Died?.Invoke();
         _hunger.ResetSlider();
         _gameOverPanel.SetActive(false);
-    }
-
-    private void ClearTable()
-    {
-        Food[] foods = FindObjectsOfType<Food>();
-
-        foreach (Food food in foods)
-        {
-            Destroy(food.gameObject);
-        }
-    }
+    }    
 }

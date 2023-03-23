@@ -7,14 +7,15 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float _rotateSpeed;
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private Tank _tank;
     [SerializeField] private Upgrades _upgrades;
     [SerializeField] private GameScreen _gameScreen;
     [SerializeField] private GameObject _paintEffect;
     [SerializeField] private FloatingJoystick _joystick;
     [SerializeField] private MenuScreen _menuScreen;
     
-    private float _levelUpValue = 0.5f;    
+    private float _levelUpValue = 0.5f;
+    private float _defaultSpeed = 4f;
+    private float _paintDelay = 1f;
 
     private Animator _animator;
     private Rigidbody _rigidbody;
@@ -32,7 +33,6 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _paintEffect.SetActive(false);
     }
-
     
     private void FixedUpdate()
     {
@@ -61,8 +61,9 @@ public class Player : MonoBehaviour
     {
         _animator.SetTrigger(Paint);
         _paintEffect.SetActive(true);
-        Invoke(nameof(StopPainting), 1f);
+        Invoke(nameof(StopPainting), _paintDelay);
     }
+
     public void SetPosition()
     {
         transform.position = new Vector3(0, 0, 0);
@@ -70,7 +71,7 @@ public class Player : MonoBehaviour
 
     private void SetDefaultValues()
     {
-        _moveSpeed = 4;
+        _moveSpeed = _defaultSpeed;
     }
 
     private void StopPainting()

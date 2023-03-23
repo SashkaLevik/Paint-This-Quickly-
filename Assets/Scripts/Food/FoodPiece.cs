@@ -7,22 +7,23 @@ public class FoodPiece : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Pistol _pistol;
     [SerializeField] private Tank _tank;
-    [SerializeField] private View _view;
+    [SerializeField] private TankView _view;
     [SerializeField] private Color _foodColor;
     [SerializeField] private ColorController _colorController;
     [SerializeField] private float _changingSpeed;
 
     private bool _isPainted;
+    private bool _isApproached;
 
     private Color _defaultColor;
     private Renderer _renderer;
 
-    public event UnityAction<bool> Approached;
+    public event UnityAction Approached;
 
     public bool IsPainted =>_isPainted;
     public Renderer Renderer => _renderer;
     public Color FoodColor => _foodColor;
-    public bool IsApproached { get; private set; }
+    public bool IsApproached => _isApproached;
 
     private void OnEnable()
     {
@@ -44,15 +45,15 @@ public class FoodPiece : MonoBehaviour
     {
         if (collider.TryGetComponent<Tank>(out _tank))
         {
-            IsApproached = true;
-            Approached?.Invoke(IsApproached);
+            _isApproached = true;
+            Approached?.Invoke();
         }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        IsApproached = false;
-        Approached?.Invoke(IsApproached);
+        _isApproached = false;
+        Approached?.Invoke();
     }
 
     public void ChangeFoodColor(Color color)
@@ -67,7 +68,7 @@ public class FoodPiece : MonoBehaviour
         }        
     }
 
-    public void Init(Tank tank, ColorController colorController, View view, Player player, Pistol pistol)
+    public void Init(Tank tank, ColorController colorController, TankView view, Player player, Pistol pistol)
     {
         _tank = tank;
         _view = view;
@@ -76,9 +77,9 @@ public class FoodPiece : MonoBehaviour
         _pistol = pistol;
     }    
 
-    private void OnColorChange(bool isApproached)
+    private void OnColorChange()
     {
-        if (isApproached)
+        if (_isApproached == true)
         {
             ChangeFoodColor(_foodColor);
         }

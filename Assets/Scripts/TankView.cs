@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class View : MonoBehaviour
+public class TankView : MonoBehaviour
 {
     [SerializeField] private Tank _tank;
     [SerializeField] protected float _changingSpeed;

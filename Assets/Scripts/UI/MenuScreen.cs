@@ -41,7 +41,6 @@ public class MenuScreen : MonoBehaviour
         _leaderboard.onClick.AddListener(OpenLeaderboard);
         _newGameButton.onClick.AddListener(PlayGame);
         _continueButton.onClick.AddListener(Continue);
-        _exitButton.onClick.AddListener(ExitGame);
         _levelScreen.ReturnToMenu += OpenMenu;
         _gameOver.Died += OpenMenu;
         _gameScreen.Returned += OpenMenu;
@@ -53,7 +52,6 @@ public class MenuScreen : MonoBehaviour
         _leaderboard.onClick.RemoveListener(OpenLeaderboard);
         _newGameButton.onClick.RemoveListener(PlayGame);
         _continueButton.onClick.RemoveListener(Continue);
-        _exitButton.onClick.RemoveListener(ExitGame);
         _levelScreen.ReturnToMenu -= OpenMenu;
         _gameOver.Died -= OpenMenu;
         _gameScreen.Returned -= OpenMenu;
@@ -84,12 +82,7 @@ public class MenuScreen : MonoBehaviour
         _menuPanel.SetActive(true);
         Time.timeScale = 0;
         _returnSound.Play();
-    }
-
-    private void ExitGame()
-    {
-        Application.Quit();
-    }
+    }    
 
     private void OnSoundButton()
     {

@@ -14,9 +14,6 @@ public class YandexAds : MonoBehaviour
     [SerializeField] private LevelScreen _levelScreen;
     [SerializeField] private YandexInitialization _yandexInitialization;
 
-    public bool IsShows { get; private set; }
-
-    public event UnityAction Shows;
     public event UnityAction RewardedAddShowed;
 
     private void Start()
@@ -47,8 +44,8 @@ public class YandexAds : MonoBehaviour
 
     private void ShowInterstitial()
     {
-        InterstitialAd.Show();
-    }
+        InterstitialAd.Show(OnAdOpen, OnIterstitialAddClose);
+    }    
 
     private void ShowRewardAd()
     {
@@ -59,7 +56,6 @@ public class YandexAds : MonoBehaviour
     
     private void OnAdOpen()
     {
-        IsShows = true;
         Time.timeScale = 0;
         AudioListener.volume = 0;
     }
@@ -67,6 +63,12 @@ public class YandexAds : MonoBehaviour
     private void OnAdClose()
     {
         Time.timeScale = 1;
+        AudioListener.volume = 1;
+    }
+
+    private void OnIterstitialAddClose(bool value)
+    {
+        //Time.timeScale = 1;
         AudioListener.volume = 1;
     }
 }

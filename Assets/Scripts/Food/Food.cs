@@ -1,6 +1,4 @@
-using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,18 +8,33 @@ public class Food : MonoBehaviour
     [SerializeField] private HungryHead _hungryHead;
 
     private float _flySpeed = 3f;
-    private bool _isCooked;
     private int _reward = 5;
+    private bool _isCoocked;   
 
-    private FoodPiece[] _foodPieces;
+    public FoodPiece[] _foodPieces;
+
     public int Reward => _reward;
 
-    public event UnityAction<Food> CookedFood;    
+    public event UnityAction<Food> CookedFood;
+
+    private void Start()
+    {
+        _foodPieces = this.GetComponentsInChildren<FoodPiece>();
+    }
+
+    private void OnEnable()
+    {
+        CookedFood += OnCooked;
+    }
+
+    private void OnDisable()
+    {
+        CookedFood -= OnCooked;
+    }
 
     private void Update()
     {
         GetPaintedFood();
-        OnCooked();
     }
    
     public void Init(Player player, HungryHead hungryHead)
@@ -32,38 +45,33 @@ public class Food : MonoBehaviour
 
     private void GetPaintedFood()
     {
-        _foodPieces = this.GetComponentsInChildren<FoodPiece>();
-
         foreach (var piece in _foodPieces)
         {
             if (piece.IsPainted == false)
             {
-                _isCooked = false;
-                break;
+                _isCoocked = false;
+                break;                
             }
             else
             {
-                _isCooked = true;
+                _isCoocked = true;
             }
-        }       
+        }
+        if (_isCoocked == true)
+        {
+            CookedFood?.Invoke(this);
+        }
     }       
 
-    private void OnCooked()
+    private void OnCooked(Food food)
     {
-        if (_isCooked == true)
-        {
-            StartCoroutine(FlyToHead());
-            return;
-        }
-        StopCoroutine(FlyToHead());
+        StartCoroutine(FlyToHead());
     }
 
     private IEnumerator FlyToHead()
     {
         yield return new WaitForSeconds(1);
-        transform.position = Vector3.MoveTowards(transform.position, _hungryHead.transform.position, _flySpeed * Time.fixedDeltaTime);
-        CookedFood?.Invoke(this);
-        yield return new WaitForSeconds(1);
+        transform.position = Vector3.MoveTowards(transform.position, _hungryHead.transform.position, _flySpeed * Time.fixedDeltaTime);        
         _hungryHead.BeginEat();
         Destroy(gameObject, 1f);
     }

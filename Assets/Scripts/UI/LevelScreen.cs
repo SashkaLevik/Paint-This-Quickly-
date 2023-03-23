@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
+
 public class LevelScreen : MonoBehaviour
 {
     [SerializeField] private Button _backToMenu;
@@ -16,11 +17,11 @@ public class LevelScreen : MonoBehaviour
     [SerializeField] private FoodSpawner _foodSpawner;
     [SerializeField] private List<Button> _buttons;
     [SerializeField] private List<Image> _pathimages;
-    [SerializeField] private GameObject[] _firstTamplate;
-    [SerializeField] private GameObject[] _secondTamplate;
-    [SerializeField] private GameObject[] _thirdTamplate;
-    [SerializeField] private GameObject[] _foursTamplate;
-    [SerializeField] private GameObject[] _fifthTamplate;
+    [SerializeField] private Food[] _firstTamplate;
+    [SerializeField] private Food[] _secondTamplate;
+    [SerializeField] private Food[] _thirdTamplate;
+    [SerializeField] private Food[] _foursTamplate;
+    [SerializeField] private Food[] _fifthTamplate;
     [SerializeField] private AudioSource _tapSound;
     [SerializeField] private Score _score;
     [SerializeField] private TMP_Text _scoreText;
@@ -106,7 +107,7 @@ public class LevelScreen : MonoBehaviour
         ReturnToMenu?.Invoke();
     }
 
-    private void OnLevelButton(GameObject[] tamplate)
+    private void OnLevelButton(Food[] tamplate)
     {
         _player.SetPosition();
         _scoreText.text = _score.TotalScore.ToString();

@@ -6,10 +6,10 @@ public class Tube : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] protected Pistol _pistol;
     [SerializeField] protected Tank _tank;
-    [SerializeField] protected View _view;
+    [SerializeField] protected TankView _view;
     [SerializeField] protected Color _tubeColor;
     [SerializeField] private float _colorChangingSpeed;
-    [SerializeField] protected GameObject _bubbles;
+    [SerializeField] private GameObject _bubbles;
 
     public event UnityAction Approached;
 
@@ -41,7 +41,7 @@ public class Tube : MonoBehaviour
         Approached -= OnTankApproached;
     }
 
-    public virtual void OnTankApproached()
+    private void OnTankApproached()
     {
         LoadPaint();
         _view.FillTank(_tubeColor, _tank.FullTank);
