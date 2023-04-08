@@ -15,6 +15,7 @@ public class YandexAds : MonoBehaviour
     [SerializeField] private YandexInitialization _yandexInitialization;
 
     public event UnityAction RewardedAddShowed;
+    public event UnityAction RewardedAddCloset;
 
     private void Start()
     {
@@ -49,7 +50,7 @@ public class YandexAds : MonoBehaviour
 
     private void ShowRewardAd()
     {
-        VideoAd.Show(OnAdOpen, OnAdClose);
+        VideoAd.Show(OnAdOpen, OnRewardedCallback, OnCloseRewardetCallback);
         RewardedAddShowed?.Invoke();
         _rewardButton.gameObject.SetActive(false);
     }
@@ -60,7 +61,12 @@ public class YandexAds : MonoBehaviour
         AudioListener.volume = 0;
     }
 
-    private void OnAdClose()
+    private void OnRewardedCallback()
+    {
+        RewardedAddShowed?.Invoke();
+    }
+
+    private void OnCloseRewardetCallback()
     {
         Time.timeScale = 1;
         AudioListener.volume = 1;

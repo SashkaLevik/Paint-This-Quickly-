@@ -16,6 +16,8 @@ public class SaveSystem : MonoBehaviour
     private const string CurrentLevel = "CurrentLevel";
     private const string TotalScore = "TotalScore";
 
+    public string Key => MoneyKey;
+
     public void Save()
     {
         PlayerPrefs.SetInt(MoneyKey, _upgrades.Money);

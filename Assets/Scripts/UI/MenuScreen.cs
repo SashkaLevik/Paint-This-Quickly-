@@ -28,6 +28,15 @@ public class MenuScreen : MonoBehaviour
     private void Awake()
     {
         _saveSystem.Load();
+        _continueButton.interactable = false;
+    }
+
+    private void Update()
+    {
+        if (PlayerPrefs.HasKey(_saveSystem.Key))
+        {
+            _continueButton.interactable = true;
+        }
     }
 
     private void Start()
