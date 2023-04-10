@@ -50,7 +50,7 @@ public class YandexAds : MonoBehaviour
 
     private void ShowRewardAd()
     {
-        VideoAd.Show(OnAdOpen, OnRewardedCallback, OnCloseRewardetCallback);
+        VideoAd.Show(OnAdOpen, OnRewardedCallback, OnCloseRewardedCallback);
         RewardedAddShowed?.Invoke();
         _rewardButton.gameObject.SetActive(false);
     }
@@ -66,7 +66,7 @@ public class YandexAds : MonoBehaviour
         RewardedAddShowed?.Invoke();
     }
 
-    private void OnCloseRewardetCallback()
+    private void OnCloseRewardedCallback()
     {
         Time.timeScale = 1;
         AudioListener.volume = 1;
