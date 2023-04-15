@@ -25,7 +25,7 @@ public class YandexAds : MonoBehaviour
     private void OnEnable()
     {
         _yandexInitialization.Completed += ApearRewardButton;
-        _foodSpawner.LevelCompleted += ShowInterstitial;
+        _levelScreen.LevelCompleted += ShowInterstitial;
         _levelScreen.NextLevelStarted += ApearRewardButton;
         _rewardButton.onClick.AddListener(ShowRewardAd);
     }
@@ -33,7 +33,7 @@ public class YandexAds : MonoBehaviour
     private void OnDisable()
     {
         _yandexInitialization.Completed -= ApearRewardButton;
-        _foodSpawner.LevelCompleted -= ShowInterstitial;
+        _levelScreen.LevelCompleted -= ShowInterstitial;
         _levelScreen.NextLevelStarted -= ApearRewardButton;
         _rewardButton.onClick.RemoveListener(ShowRewardAd);
     }

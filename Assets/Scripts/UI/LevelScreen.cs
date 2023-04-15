@@ -11,8 +11,12 @@ public class LevelScreen : MonoBehaviour
     [SerializeField] private Button _secondLevel;
     [SerializeField] private Button _thirdLevel;
     [SerializeField] private Button _foursLevel;
-    [SerializeField] private Button _fifthLevel;    
+    [SerializeField] private Button _fifthLevel;
+    [SerializeField] private Button _chooseLevel;
+    [SerializeField] private Button _tryAgain;
+    [SerializeField] private GameObject _completePanel;
     [SerializeField] private GameObject _levelPanel;
+    [SerializeField] private GameObject _winPanel;
     [SerializeField] private MenuScreen _menuScreen;
     [SerializeField] private FoodSpawner _foodSpawner;
     [SerializeField] private List<Button> _buttons;
@@ -29,6 +33,7 @@ public class LevelScreen : MonoBehaviour
 
     public event UnityAction ReturnToMenu;
     public event UnityAction NextLevelStarted;
+    public event UnityAction LevelCompleted;
 
     private void Start()
     {
@@ -43,7 +48,8 @@ public class LevelScreen : MonoBehaviour
     {
         _menuScreen.NewGameStarted += StartNewGame;
         _menuScreen.Continued += ChooseLevel;
-        _foodSpawner.LevelCompleted += NextLevel;
+        _foodSpawner.LevelCompleted += CompleteLevel;
+        _chooseLevel.onClick.AddListener(NextLevel);
         _backToMenu.onClick.AddListener(Return);
         _firstLevel.onClick.AddListener(() => OnLevelButton(_firstTamplate));
         _secondLevel.onClick.AddListener(() => OnLevelButton(_secondTamplate));
@@ -56,7 +62,8 @@ public class LevelScreen : MonoBehaviour
     {
         _menuScreen.NewGameStarted -= StartNewGame;
         _menuScreen.Continued -= ChooseLevel;
-        _foodSpawner.LevelCompleted -= NextLevel;
+        _foodSpawner.LevelCompleted -= CompleteLevel;
+        _chooseLevel.onClick.RemoveListener(NextLevel);
         _backToMenu.onClick.RemoveListener(Return);
         _firstLevel.onClick.RemoveListener(() => OnLevelButton(_firstTamplate));
         _secondLevel.onClick.RemoveListener(() => OnLevelButton(_secondTamplate));
@@ -67,6 +74,7 @@ public class LevelScreen : MonoBehaviour
 
     private void StartNewGame()
     {
+        _winPanel.SetActive(false);
         ResetButtons();
         ChooseLevel();
     }
@@ -120,6 +128,9 @@ public class LevelScreen : MonoBehaviour
 
     private void NextLevel()
     {
+        LevelCompleted?.Invoke();
+        Debug.Log("Inter");
+        _completePanel.SetActive(false);
         _levelPanel.SetActive(true);
         Time.timeScale = 0;
 
@@ -130,6 +141,22 @@ public class LevelScreen : MonoBehaviour
                 button.interactable = true;
                 break;
             }            
+        }
+    }
+
+    private void CompleteLevel()
+    {
+        _completePanel.SetActive(true);
+    }
+
+    private void WinGame()
+    {
+        foreach (var food in _fifthTamplate)
+        {
+            if (food == null)
+            {
+                _winPanel.SetActive(true);
+            }
         }
     }
 }
