@@ -11,6 +11,9 @@ public class MenuScreen : MonoBehaviour
     [SerializeField] private Button _continueButton;
     [SerializeField] private Button _exitButton;
     [SerializeField] private Button _leaderboard;
+    [SerializeField] private Button _howToPlay;
+    [SerializeField] private Button _howToPlayReturn;
+    [SerializeField] private GameObject _howToPlayText;
     [SerializeField] private GameObject _menuPanel;
     [SerializeField] private GameScreen _gameScreen;
     [SerializeField] private LevelScreen _levelScreen;
@@ -42,10 +45,13 @@ public class MenuScreen : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 0;
+        _howToPlayText.SetActive(false);
     }
 
     private void OnEnable()
     {
+        _howToPlay.onClick.AddListener(OnDescription);
+        _howToPlayReturn.onClick.AddListener(OnExitDescription);
         _mute.onClick.AddListener(OnSoundButton);
         _leaderboard.onClick.AddListener(OpenLeaderboard);
         _newGameButton.onClick.AddListener(PlayGame);
@@ -57,6 +63,8 @@ public class MenuScreen : MonoBehaviour
 
     private void OnDisable()
     {
+        _howToPlay.onClick.RemoveListener(OnDescription);
+        _howToPlayReturn.onClick.RemoveListener(OnExitDescription);
         _mute.onClick.RemoveListener(OnSoundButton);
         _leaderboard.onClick.RemoveListener(OpenLeaderboard);
         _newGameButton.onClick.RemoveListener(PlayGame);
@@ -107,5 +115,15 @@ public class MenuScreen : MonoBehaviour
             _soundOn.gameObject.SetActive(true);
             AudioListener.volume = 1;
         }
+    }
+
+    private void OnDescription()
+    {
+        _howToPlayText.SetActive(true);
+    }
+
+    private void OnExitDescription()
+    {
+        _howToPlayText.SetActive(false);
     }
 }
